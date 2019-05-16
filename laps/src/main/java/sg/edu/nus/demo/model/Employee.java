@@ -1,9 +1,12 @@
 package sg.edu.nus.demo.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -22,6 +25,9 @@ public class Employee {
 	private int annualLeaveBalance;
 	private int medicalLeaveBalance;
 	private int compLeaveBalance;
+	
+	@OneToMany(targetEntity=AnnualLeave.class, mappedBy="employee")
+	public Collection<AnnualLeave> annualLeaveList;
 	
 	public Employee() {}
 
