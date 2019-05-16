@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -28,6 +30,10 @@ public class Employee {
 	
 	@OneToMany(targetEntity=AnnualLeave.class, mappedBy="employee")
 	public Collection<AnnualLeave> annualLeaveList;
+	
+	@ManyToOne
+	@JoinColumn(name="managerId")
+	private Manager manager; //assume each employee only one manager
 	
 	public Employee() {}
 
