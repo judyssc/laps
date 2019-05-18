@@ -21,6 +21,8 @@ public class AnnualLeave {
 	private LocalDateTime startDate;
 	private LocalDateTime endDate;
 	private String status;
+	private String reason;
+	private String workDessemination;
 	private String managerComments;
 	
 	@ManyToOne
@@ -103,6 +105,30 @@ public class AnnualLeave {
 
 	public void setManagerComments(String managerComments) {
 		this.managerComments = managerComments;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public String getWorkDessemination() {
+		return workDessemination;
+	}
+
+	public void setWorkDessemination(String workDessemination) {
+		this.workDessemination = workDessemination;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override

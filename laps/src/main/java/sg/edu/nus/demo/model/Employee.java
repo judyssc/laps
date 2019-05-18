@@ -22,7 +22,7 @@ public class Employee {
 	private String employeeName;
 	private String userId;
 	private String password;
-	private String employeeType;
+	private String employeeType; //admin or pro(employee,manager)
 	private String managerId;
 	private int annualLeaveBalance;
 	private int medicalLeaveBalance;
@@ -45,11 +45,11 @@ public class Employee {
 		this.employeeType = employeeType;
 		this.managerId = managerId;
 		
-		if(employeeType=="admin")
+		if(employeeType=="Admin")
 		{
 			this.annualLeaveBalance = 14;
 		}
-		else if (employeeType=="pro")
+		else if (employeeType=="Employee" || employeeType=="Manager")
 		{
 			this.annualLeaveBalance = 18;
 		}
