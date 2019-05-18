@@ -37,11 +37,10 @@ public class CompLeave {
 	}
 	
 	
-	public CompLeave(int cLeaveId, String employeeId, int daysApplied, LocalDateTime dateOfApplication,
+	public CompLeave(String employeeId, int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
 			int contactNo, String managerComments, Employee employee) {
 		super();
-		this.cLeaveId = cLeaveId;
 		this.employeeId = employeeId;
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;

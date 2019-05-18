@@ -37,11 +37,10 @@ public class AnnualLeave {
 	}
 	
 	
-	public AnnualLeave(int aLeaveId, String employeeId, int daysApplied, LocalDateTime dateOfApplication,
+	public AnnualLeave(String employeeId, int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
 			int contactNo, String managerComments, Employee employee) {
 		super();
-		this.aLeaveId = aLeaveId;
 		this.employeeId = employeeId;
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;
