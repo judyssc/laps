@@ -10,13 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "annual_leave")
-public class AnnualLeave {
+@Table(name = "compensation_leave")
+public class CompLeave {
 
 	//DateTimeFormatter df = DateTimeFormatter.ofPattern("d-MMM-yyyy");
 	
 	@Id
-	private int aLeaveId;
+	private int cLeaveId;
 	private String employeeId;
 	private int daysApplied;
 	private LocalDateTime dateOfApplication;
@@ -32,16 +32,16 @@ public class AnnualLeave {
 	@JoinColumn(name="employeeid") //make sure this ties with the table
 	private Employee employee;
 	
-	public AnnualLeave() {
+	public CompLeave() {
 		super();
 	}
 	
 	
-	public AnnualLeave(int aLeaveId, String employeeId, int daysApplied, LocalDateTime dateOfApplication,
+	public CompLeave(int cLeaveId, String employeeId, int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
 			int contactNo, String managerComments, Employee employee) {
 		super();
-		this.aLeaveId = aLeaveId;
+		this.cLeaveId = cLeaveId;
 		this.employeeId = employeeId;
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;
@@ -55,14 +55,13 @@ public class AnnualLeave {
 		this.employee = employee;
 	}
 
-	
-	public int getaLeaveId() {
-		return aLeaveId;
+	public int getcLeaveId() {
+		return cLeaveId;
 	}
 
 
-	public void setaLeaveId(int aLeaveId) {
-		this.aLeaveId = aLeaveId;
+	public void setcLeaveId(int cLeaveId) {
+		this.cLeaveId = cLeaveId;
 	}
 
 
@@ -178,7 +177,7 @@ public class AnnualLeave {
 
 	@Override
 	public String toString() {
-		return "AnnualLeave [aLeaveId=" + aLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied
+		return "CompLeave [cLeaveId=" + cLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied
 				+ ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", status=" + status + ", reason=" + reason + ", workDissemination=" + workDissemination
 				+ ", contactNo=" + contactNo + ", managerComments=" + managerComments + ", employee=" + employee + "]";
@@ -202,7 +201,7 @@ public class AnnualLeave {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AnnualLeave other = (AnnualLeave) obj;
+		CompLeave other = (CompLeave) obj;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
@@ -212,3 +211,4 @@ public class AnnualLeave {
 	}
 		
 }
+

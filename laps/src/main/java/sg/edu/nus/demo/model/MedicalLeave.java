@@ -10,13 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "annual_leave")
-public class AnnualLeave {
+@Table(name = "medical_leave")
+public class MedicalLeave {
 
 	//DateTimeFormatter df = DateTimeFormatter.ofPattern("d-MMM-yyyy");
 	
 	@Id
-	private int aLeaveId;
+	private int mLeaveId;
 	private String employeeId;
 	private int daysApplied;
 	private LocalDateTime dateOfApplication;
@@ -32,16 +32,17 @@ public class AnnualLeave {
 	@JoinColumn(name="employeeid") //make sure this ties with the table
 	private Employee employee;
 	
-	public AnnualLeave() {
+	
+	
+	public MedicalLeave() {
 		super();
 	}
-	
-	
-	public AnnualLeave(int aLeaveId, String employeeId, int daysApplied, LocalDateTime dateOfApplication,
+
+	public MedicalLeave(int mLeaveId, String employeeId, int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
 			int contactNo, String managerComments, Employee employee) {
 		super();
-		this.aLeaveId = aLeaveId;
+		this.mLeaveId = mLeaveId;
 		this.employeeId = employeeId;
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;
@@ -55,14 +56,15 @@ public class AnnualLeave {
 		this.employee = employee;
 	}
 
-	
-	public int getaLeaveId() {
-		return aLeaveId;
+
+
+	public int getmLeaveId() {
+		return mLeaveId;
 	}
 
 
-	public void setaLeaveId(int aLeaveId) {
-		this.aLeaveId = aLeaveId;
+	public void setmLeaveId(int mLeaveId) {
+		this.mLeaveId = mLeaveId;
 	}
 
 
@@ -175,15 +177,13 @@ public class AnnualLeave {
 		this.employee = employee;
 	}
 	
-
 	@Override
 	public String toString() {
-		return "AnnualLeave [aLeaveId=" + aLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied
+		return "MedicalLeave [mLeaveId=" + mLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied
 				+ ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", status=" + status + ", reason=" + reason + ", workDissemination=" + workDissemination
 				+ ", contactNo=" + contactNo + ", managerComments=" + managerComments + ", employee=" + employee + "]";
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -194,6 +194,7 @@ public class AnnualLeave {
 	}
 
 	//assume view personal leave history by start_date
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -202,7 +203,7 @@ public class AnnualLeave {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AnnualLeave other = (AnnualLeave) obj;
+		MedicalLeave other = (MedicalLeave) obj;
 		if (startDate == null) {
 			if (other.startDate != null)
 				return false;
@@ -212,3 +213,4 @@ public class AnnualLeave {
 	}
 		
 }
+

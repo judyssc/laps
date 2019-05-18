@@ -9,10 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Table(name = "employee")
 public class Employee {
 	
 	@Id
@@ -22,6 +25,7 @@ public class Employee {
 	private String employeeName;
 	private String userId;
 	private String password;
+	private String designation;
 	private String employeeType; //admin or pro(employee,manager)
 	private String managerId;
 	private int annualLeaveBalance;
@@ -31,25 +35,40 @@ public class Employee {
 	@OneToMany(targetEntity=AnnualLeave.class, mappedBy="employee")
 	public Collection<AnnualLeave> annualLeaveList;
 	
-	@ManyToOne
-	@JoinColumn(name="managerId")
-	private Manager manager; //assume each employee only one manager
+	@OneToMany(targetEntity=MedicalLeave.class, mappedBy="employee")
+	public Collection<MedicalLeave> medicalLeaveList;
 	
+	@OneToMany(targetEntity=CompLeave.class, mappedBy="employee")
+	public Collection<CompLeave> compLeaveList;
+	
+	@ManyToOne 
+	@JoinColumn(name="managerid")	 
+	private Manager manager; //assume each employee only one manager
+		
 	public Employee() {}
-
-	public Employee(String employeeName, String userId, String password, String employeeType, String managerId) {
+	
+	public Employee(String employeeId, String employeeName, String userId, String password, String designation,
+			String employeeType, String managerId, int annualLeaveBalance, int medicalLeaveBalance,
+			int compLeaveBalance, Collection<AnnualLeave> annualLeaveList, Manager manager) {
 		super();
+		this.employeeId = employeeId;
 		this.employeeName = employeeName;
 		this.userId = userId;
 		this.password = password;
+		this.designation = designation;
 		this.employeeType = employeeType;
 		this.managerId = managerId;
+		this.annualLeaveBalance = annualLeaveBalance;
+		this.medicalLeaveBalance = medicalLeaveBalance;
+		this.compLeaveBalance = compLeaveBalance;
+		this.annualLeaveList = annualLeaveList;
+		this.manager = manager;
 		
-		if(employeeType=="Admin")
+		if(designation=="developer")
 		{
 			this.annualLeaveBalance = 14;
 		}
-		else if (employeeType=="Employee" || employeeType=="Manager")
+		else if (designation=="teamlead")
 		{
 			this.annualLeaveBalance = 18;
 		}
@@ -87,6 +106,14 @@ public class Employee {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 
 	public String getEmployeeType() {
@@ -129,12 +156,29 @@ public class Employee {
 		this.compLeaveBalance = compLeaveBalance;
 	}
 
+	public Collection<AnnualLeave> getAnnualLeaveList() {
+		return annualLeaveList;
+	}
+
+	public void setAnnualLeaveList(Collection<AnnualLeave> annualLeaveList) {
+		this.annualLeaveList = annualLeaveList;
+	}
+
+	public Manager getManager() {
+		return manager;
+	}
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", userId=" + userId
-				+ ", password=" + password + ", employeeType=" + employeeType + ", managerId=" + managerId
-				+ ", annualLeaveBalance=" + annualLeaveBalance + ", medicalLeaveBalance=" + medicalLeaveBalance
-				+ ", compLeaveBalance=" + compLeaveBalance + "]";
+				+ ", password=" + password + ", designation=" + designation + ", employeeType=" + employeeType
+				+ ", managerId=" + managerId + ", annualLeaveBalance=" + annualLeaveBalance + ", medicalLeaveBalance="
+				+ medicalLeaveBalance + ", compLeaveBalance=" + compLeaveBalance + ", annualLeaveList="
+				+ annualLeaveList + ", manager=" + manager + "]";
 	}
 
 	@Override
@@ -163,5 +207,4 @@ public class Employee {
 		return true;
 	}
 
-	
 }
