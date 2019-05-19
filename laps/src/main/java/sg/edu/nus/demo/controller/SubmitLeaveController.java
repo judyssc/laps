@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import sg.edu.nus.demo.model.AnnualLeave;
 import sg.edu.nus.demo.repo.AnnualLeaveRepository;
@@ -22,17 +23,16 @@ public class SubmitLeaveController {
 		return "annualLeaveForm";
 	}
 	
-	@PostMapping("/all")
-	public String saveAnnualLeave(AnnualLeave annualLeave) {
+	@PostMapping("/annualleaveconfirmation")
+	public ModelAndView saveAnnualLeave(AnnualLeave annualLeave) {
 		annualleaveRepository.save(annualLeave);
-		return "redirect:/all";
+		return new ModelAndView("annualleaveconfirmation","annualLeave", annualLeave);		
 	}
 	
-	@GetMapping(path="/all")
-	public String getAllAnnualLeave(Model model) {
-		
-		model.addAttribute("listAnnualLeave", annualleaveRepository.findAll());
-		return "all";
+	@GetMapping(path="/annualleaveconfirmation")
+	public String confirmAnnualLeave(Model model, AnnualLeave annualLeave) {		
+		model.addAttribute("annualLeave", annualLeave);
+		return "annualleaveconfirmation";
 	}
 	
 	

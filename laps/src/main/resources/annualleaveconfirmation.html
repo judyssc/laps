@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Confirmation page</title>
+</head>
+<body>
+	<h1>Annual Leave Application Received</h1>
+	<p>Your annual leave application will be forwarded to your
+	manager for approval. Please check the details of your application below. </p>
+	<table>
+		<tr>
+			<th>Reference number</th>
+			<th>Days applied</th>
+			<th>Date of application</th>
+			<th>Start date of leave</th>
+			<th>End date of leave</th>
+			<th>Application status</th>
+			<th>Reason for application</th>
+			<th>Arrangements for your work duties:</th>
+			<th>Manager comments</th>
+		</tr>
+		<tr th:object=${annualleave}>
+			<td th:text="${annualLeave.aLeaveId}">Error</td>
+			<td th:text="${annualLeave.daysApplied}">Error</td>
+			<td th:text="${annualLeave.dateOfApplication}">Error</td>
+			<td th:text="${annualLeave.startDate}">Error</td>
+			<td th:text="${annualLeave.endDate}">Error</td>
+			<td th:text="${annualLeave.status}">Error</td>
+			<td th:text="${annualLeave.reason}">Error</td>
+			<td th:text="${annualLeave.workDessemination}">Error</td>
+			<td th:text="${annualLeave.managerComments}">Error</td>
+			
+		</tr>
+	</table>
+</body>
+</html>
