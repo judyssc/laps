@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>LAPS Annual Leave Form</title>
+</head>
+<body>
+	<div class="container">
+		<div>
+			<form class="form-horizontal" th:object="${annualLeave}"
+				th:action="@{/all}" method="post">
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="hidden" class="form-control" th:field="*{aLeaveId}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">No. of Days Applying For:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{daysApplied}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Date of application:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:datetime="*{dateOfApplication}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Leave Start Date:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:datetime="*{startDate}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Leave End Date:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:datetime="*{endDate}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Status of Leave:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{status}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Reason for applying leave:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{reason}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Work Duties hand over to:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{workDessemination}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Manager Comments:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{managerComments}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>
