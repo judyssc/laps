@@ -29,7 +29,8 @@ public class MedicalLeave {
 	private String managerComments;
 	
 	@ManyToOne
-	@JoinColumn(name="employeeid") //make sure this ties with the table
+	//@JoinColumn(name="employeeid") //make sure this ties with the table
+	@JoinColumn(referencedColumnName="employeeid")
 	private Employee employee;
 	
 	

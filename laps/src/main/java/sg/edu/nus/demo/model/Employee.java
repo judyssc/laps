@@ -42,7 +42,8 @@ public class Employee {
 	public Collection<CompLeave> compLeaveList;
 	
 	@ManyToOne 
-	@JoinColumn(name="managerid")	 
+	//@JoinColumn(name="managerid")	 
+	@JoinColumn(name="id")	
 	private Manager manager; //assume each employee only one manager
 		
 	public Employee() {}
