@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS laps;
 
-CREATE DATABASE laps;
+CREATE DATABASE laps
 DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 USE laps;
@@ -41,6 +41,24 @@ CREATE TABLE `laps`.`employee` (
   `compleavebal` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT MGRID_FK FOREIGN KEY (managerid) REFERENCES manager(id));
+  
+   CREATE TABLE `laps`.`leave` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `employeeid` VARCHAR(45) NULL,
+  `daysapplied` INT NULL,
+  `dateofapplication` DATETIME NULL,
+  `startdate` DATETIME NULL,
+  `enddate` DATETIME NULL,
+  `status` VARCHAR(45) NULL,
+  `reason` VARCHAR(200) NULL,
+  `workdissemination` VARCHAR(45) NULL,
+  `contactno` INT NULL,
+  `managercomments` VARCHAR(200) NULL,
+  `type` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `LID_FK`
+    FOREIGN KEY (`employeeid`)
+    REFERENCES `laps`.`employee` (`id`));
   
   CREATE TABLE `laps`.`annual_leave` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -122,11 +140,13 @@ INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`
 INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `managerid`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('8', 'Yvonne', 'yvonne', 'password', 'developer', 'employee', '2', '14', '60', '0');
 INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `managerid`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('9', 'Xiaolin', 'xiaolin', 'password', 'developer', 'employee', '2', '14', '60', '0');
 
+INSERT INTO `laps`.`leave` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`, `type`) VALUES ('1', '1', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'leave', 'Xiaolin', '12345678', 'no comment', 'annual');
+
 INSERT INTO `laps`.`annual_leave` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`) VALUES ('1', '1', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Kishore', '12345678', 'no comment');
 
-INSERT INTO `laps`.`medical_leave` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`) VALUES ('1', '2', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Guoan', '12345678', 'no comment');
+INSERT INTO `laps`.`medical_leave` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`) VALUES ('1', '2', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'medical leave', 'Guoan', '12345678', 'no comment');
 
-INSERT INTO `laps`.`compensation_leave` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`) VALUES ('1', '3', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Leesiong', '12345678', 'no comment');
+INSERT INTO `laps`.`compensation_leave` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`) VALUES ('1', '3', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'comp leave', 'Leesiong', '12345678', 'no comment');
 
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('1', 'Annual Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('2', 'Medical Leave');
