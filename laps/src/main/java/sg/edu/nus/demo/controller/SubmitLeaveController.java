@@ -10,32 +10,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import sg.edu.nus.demo.model.AnnualLeave;
+import sg.edu.nus.demo.model.LeaveType;
 import sg.edu.nus.demo.repo.AnnualLeaveRepository;
+import sg.edu.nus.demo.repo.LeaveRepository;
 
 
 @Controller
 public class SubmitLeaveController {
 
 	@Autowired
-	private AnnualLeaveRepository annualleaveRepository;
+	private LeaveRepository leaveRepository;
 	
-	@GetMapping("/annualLeaveForm")
-	public String createNewAnnualLeave(Model model) {
+	@GetMapping("/leaveform")
+	public String createNewLeave(Model model) {
 		
-		model.addAttribute("annualLeave", new AnnualLeave());
-		return "annualLeaveForm";
+		model.addAttribute("leave", new LeaveType());
+		return "leaveform";
 	}
 	
-	@PostMapping("/annualleaveconfirmation")
-	public ModelAndView saveAnnualLeave(AnnualLeave annualLeave) {
-		annualleaveRepository.save(annualLeave);
-		return new ModelAndView("annualleaveconfirmation","annualLeave", annualLeave);		
+	@PostMapping("/leaveconfirmation")
+	public ModelAndView saveLeave(LeaveType leave) {
+		leaveRepository.save(leave);
+		return new ModelAndView("leaveconfirmation","leave", leave);		
 	}
 	
-	@GetMapping("/annualleaveconfirmation")
-	public String confirmAnnualLeave(Model model, AnnualLeave annualLeave) {		
-		model.addAttribute("annualLeave", annualLeave);
-		return "annualleaveconfirmation";
+	@GetMapping("/leaveconfirmation")
+	public String confirmLeave(Model model, LeaveType leave) {		
+		model.addAttribute("leave", leave);
+		return "leaveconfirmation";
 	}
 	
 	
