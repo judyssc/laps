@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>LAPS Annual Leave Form</title>
+<title>LAPS Leave Form</title>
 </head>
 <body>
 	<div class="container">
 		<div>
-			<form class="form-horizontal" th:object="${annualLeave}"
-				th:action="@{/annualleaveconfirmation}" method="post">
+			<form class="form-horizontal" th:object="${leave}"
+				th:action="@{/leaveconfirmation}" method="post">
 				<div class="form-group">
 					<div class="col-sm-10">
-						<input type="hidden" class="form-control" th:field="*{aLeaveId}" />
+						<input type="hidden" class="form-control" th:field="*{leaveId}" />
 					</div>
-				</div>
+				</div>				
 				<div class="form-group">
 					<label class="col-sm-2 control-label">No. of Days Applying For:</label>
 					<div class="col-sm-10">
@@ -66,6 +66,12 @@
 					<label class="col-sm-2 control-label">Manager Comments:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{managerComments}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Type of leave</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" th:field="*{type}" />
 					</div>
 				</div>
 				<div class="form-group">

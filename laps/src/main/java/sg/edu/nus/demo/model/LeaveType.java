@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "leave")
-public class Leave {
+@Table(name = "leave_type")
+public class LeaveType {
 
 	//DateTimeFormatter df = DateTimeFormatter.ofPattern("d-MMM-yyyy");
 	
@@ -34,11 +34,11 @@ public class Leave {
 	@JoinColumn(referencedColumnName="employeeid")
 	private Employee employee;
 	
-	public Leave() {
+	public LeaveType() {
 		super();
 	}
 	
-	public Leave(String employeeId, int daysApplied, LocalDateTime dateOfApplication, LocalDateTime startDate,
+	public LeaveType(String employeeId, int daysApplied, LocalDateTime dateOfApplication, LocalDateTime startDate,
 			LocalDateTime endDate, String status, String reason, String workDissemination, int contactNo,
 			String managerComments, String type, Employee employee) {
 		super();
@@ -192,31 +192,6 @@ public class Leave {
 				+ employee + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
-		return result;
-	}
-
-	//assume view personal leave history by start_date
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Leave other = (Leave) obj;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		return true;
-	}
 		
 }
 
