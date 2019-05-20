@@ -10,5 +10,4 @@ import sg.edu.nus.demo.model.CompLeave;
 @Repository
 public interface CompLeaveRepository extends JpaRepository<CompLeave, String> {
 
-	List<CompLeave> findByEmployeeId(String employeeid);
 }

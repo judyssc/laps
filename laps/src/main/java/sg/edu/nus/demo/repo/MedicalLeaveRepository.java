@@ -9,5 +9,5 @@ import sg.edu.nus.demo.model.MedicalLeave;
 
 @Repository
 public interface MedicalLeaveRepository extends JpaRepository<MedicalLeave, String> {
-	List<MedicalLeave> findByEmployeeId(String employeeid);
+
 }
