@@ -31,7 +31,7 @@ public class SubmitLeaveController {
 		return new ModelAndView("annualleaveconfirmation","annualLeave", annualLeave);		
 	}
 	
-	@GetMapping(path="/annualleaveconfirmation")
+	@GetMapping("/annualleaveconfirmation")
 	public String confirmAnnualLeave(Model model, AnnualLeave annualLeave) {		
 		model.addAttribute("annualLeave", annualLeave);
 		return "annualleaveconfirmation";

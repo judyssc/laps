@@ -12,5 +12,4 @@ import sg.edu.nus.demo.model.AnnualLeave;
 @Repository
 public interface AnnualLeaveRepository extends JpaRepository<AnnualLeave, String>{
 
-	List<AnnualLeave> findByEmployeeId(String employeeid);
 }
