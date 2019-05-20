@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,8 +18,9 @@ public class AnnualLeave {
 	//DateTimeFormatter df = DateTimeFormatter.ofPattern("d-MMM-yyyy");
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int aLeaveId;
-	private String employeeId;
+	//private String employeeId;
 	private int daysApplied;
 	private LocalDateTime dateOfApplication;
 	private LocalDateTime startDate;
@@ -30,19 +33,18 @@ public class AnnualLeave {
 	
 	@ManyToOne
 	//@JoinColumn(name="employeeid") //make sure this ties with the table
-	@JoinColumn(referencedColumnName="employeeid")
+	@JoinColumn(name="employeeId")
 	private Employee employee;
 	
 	public AnnualLeave() {
 		super();
 	}
 	
-	//Comment from LeeSiong: I need an employee object (from employee login) to be passed to my ProductController before I can pass it on as an argument in the annual leave constructor. 
-	public AnnualLeave(String employeeId, int daysApplied, LocalDateTime dateOfApplication,
+	public AnnualLeave(/* String employeeId, */int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
-			int contactNo, String managerComments/* , Employee employee */) {
+			int contactNo, String managerComments , Employee employee ) {
 		super();
-		this.employeeId = employeeId;
+		/* this.employeeId = employeeId; */
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;
 		this.startDate = startDate;
@@ -52,7 +54,7 @@ public class AnnualLeave {
 		this.workDissemination = workDissemination;
 		this.contactNo = contactNo;
 		this.managerComments = managerComments;
-		/* this.employee = employee; */
+		this.employee = employee; 
 	}
 
 	
@@ -66,14 +68,13 @@ public class AnnualLeave {
 	}
 
 
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
-	}
+	/*
+	 * public String getEmployeeId() { return employeeId; }
+	 * 
+	 * 
+	 * public void setEmployeeId(String employeeId) { this.employeeId = employeeId;
+	 * }
+	 */
 
 
 	public int getDaysApplied() {
@@ -176,13 +177,14 @@ public class AnnualLeave {
 	}
 	
 
-	@Override
-	public String toString() {
-		return "AnnualLeave [aLeaveId=" + aLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied
-				+ ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", status=" + status + ", reason=" + reason + ", workDissemination=" + workDissemination
-				+ ", contactNo=" + contactNo + ", managerComments=" + managerComments + ", employee=" + employee + "]";
-	}
+	/*
+	 * @Override public String toString() { return "AnnualLeave [aLeaveId=" +
+	 * aLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied +
+	 * ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate +
+	 * ", endDate=" + endDate + ", status=" + status + ", reason=" + reason +
+	 * ", workDissemination=" + workDissemination + ", contactNo=" + contactNo +
+	 * ", managerComments=" + managerComments + ", employee=" + employee + "]"; }
+	 */
 
 
 	@Override

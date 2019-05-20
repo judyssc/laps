@@ -17,7 +17,7 @@ public class CompLeave {
 	
 	@Id
 	private int cLeaveId;
-	private String employeeId;
+	//private String employeeId;
 	private int daysApplied;
 	private LocalDateTime dateOfApplication;
 	private LocalDateTime startDate;
@@ -30,7 +30,7 @@ public class CompLeave {
 	
 	@ManyToOne
 	//@JoinColumn(name="employeeid") //make sure this ties with the table
-	@JoinColumn(referencedColumnName="employeeid")
+	@JoinColumn(referencedColumnName="id")
 	private Employee employee;
 	
 	public CompLeave() {
@@ -38,11 +38,11 @@ public class CompLeave {
 	}
 	
 	
-	public CompLeave(String employeeId, int daysApplied, LocalDateTime dateOfApplication,
+	public CompLeave(/* String employeeId, */int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
 			int contactNo, String managerComments, Employee employee) {
 		super();
-		this.employeeId = employeeId;
+		//this.employeeId = employeeId;
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;
 		this.startDate = startDate;
@@ -65,14 +65,13 @@ public class CompLeave {
 	}
 
 
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
-	}
+	/*
+	 * public String getEmployeeId() { return employeeId; }
+	 * 
+	 * 
+	 * public void setEmployeeId(String employeeId) { this.employeeId = employeeId;
+	 * }
+	 */
 
 
 	public int getDaysApplied() {
@@ -175,14 +174,14 @@ public class CompLeave {
 	}
 	
 
-	@Override
-	public String toString() {
-		return "CompLeave [cLeaveId=" + cLeaveId + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied
-				+ ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", status=" + status + ", reason=" + reason + ", workDissemination=" + workDissemination
-				+ ", contactNo=" + contactNo + ", managerComments=" + managerComments + ", employee=" + employee + "]";
-	}
-
+	/*
+	 * @Override public String toString() { return "CompLeave [cLeaveId=" + cLeaveId
+	 * + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied +
+	 * ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate +
+	 * ", endDate=" + endDate + ", status=" + status + ", reason=" + reason +
+	 * ", workDissemination=" + workDissemination + ", contactNo=" + contactNo +
+	 * ", managerComments=" + managerComments + ", employee=" + employee + "]"; }
+	 */
 
 	@Override
 	public int hashCode() {

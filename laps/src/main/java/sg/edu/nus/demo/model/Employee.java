@@ -19,9 +19,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	private String employeeId; 
+	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	private Integer employeeId; 
 	private String employeeName;
 	private String userId;
 	private String password;
@@ -48,11 +48,11 @@ public class Employee {
 		
 	public Employee() {}
 	
-	public Employee(String employeeId, String employeeName, String userId, String password, String designation,
+	public Employee(/* String employeeId, */String employeeName, String userId, String password, String designation,
 			String employeeType, String managerId, int annualLeaveBalance, int medicalLeaveBalance,
 			int compLeaveBalance, Collection<AnnualLeave> annualLeaveList, Manager manager) {
 		super();
-		this.employeeId = employeeId;
+		/* this.employeeId = employeeId; */
 		this.employeeName = employeeName;
 		this.userId = userId;
 		this.password = password;
@@ -77,11 +77,11 @@ public class Employee {
 		this.compLeaveBalance = 0;
 	}
 
-	public String getEmployeeId() {
+	public Integer getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(String employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 

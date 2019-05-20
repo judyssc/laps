@@ -13,9 +13,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Administrator {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	private String adminId;
+	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	private Integer adminId;
 	private String name;
 	private String userId;
 	private String password;
@@ -29,11 +29,11 @@ public class Administrator {
 		this.password = password;
 	}
 
-	public String getAdminId() {
+	public Integer getAdminId() {
 		return adminId;
 	}
 
-	public void setAdminId(String adminId) {
+	public void setAdminId(Integer adminId) {
 		this.adminId = adminId;
 	}
 

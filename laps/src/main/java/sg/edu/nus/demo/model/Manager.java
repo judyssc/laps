@@ -16,9 +16,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Manager {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	private String mgrId;
+	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	private Integer mgrId;
 	private String name;
 	private String userid;
 	private String password;
@@ -35,11 +35,11 @@ public class Manager {
 	@OneToMany(targetEntity=Employee.class,mappedBy="manager")
 	public Collection<Employee> employees;
 	
-	public String getMgrId() {
+	public Integer getMgrId() {
 		return mgrId;
 	}
 
-	public void setMgrId(String mgrId) {
+	public void setMgrId(Integer mgrId) {
 		this.mgrId = mgrId;
 	}
 
