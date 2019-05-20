@@ -37,10 +37,10 @@ public class AnnualLeave {
 		super();
 	}
 	
-	
+	//Comment from LeeSiong: I need an employee object (from employee login) to be passed to my ProductController before I can pass it on as an argument in the annual leave constructor. 
 	public AnnualLeave(String employeeId, int daysApplied, LocalDateTime dateOfApplication,
 			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
-			int contactNo, String managerComments, Employee employee) {
+			int contactNo, String managerComments/* , Employee employee */) {
 		super();
 		this.employeeId = employeeId;
 		this.daysApplied = daysApplied;
@@ -52,7 +52,7 @@ public class AnnualLeave {
 		this.workDissemination = workDissemination;
 		this.contactNo = contactNo;
 		this.managerComments = managerComments;
-		this.employee = employee;
+		/* this.employee = employee; */
 	}
 
 	
