@@ -18,7 +18,7 @@ public class Manager {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
-	private Integer mgrId;
+	private int mgrId;
 	private String name;
 	private String userid;
 	private String password;
@@ -35,11 +35,11 @@ public class Manager {
 	@OneToMany(targetEntity=Employee.class,mappedBy="manager")
 	public Collection<Employee> employees;
 	
-	public Integer getMgrId() {
+	public int getMgrId() {
 		return mgrId;
 	}
 
-	public void setMgrId(Integer mgrId) {
+	public void setMgrId(int mgrId) {
 		this.mgrId = mgrId;
 	}
 

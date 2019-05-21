@@ -15,7 +15,7 @@ public class Administrator {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
-	private Integer adminId;
+	private int adminId;
 	private String name;
 	private String userId;
 	private String password;
@@ -29,11 +29,11 @@ public class Administrator {
 		this.password = password;
 	}
 
-	public Integer getAdminId() {
+	public int getAdminId() {
 		return adminId;
 	}
 
-	public void setAdminId(Integer adminId) {
+	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 

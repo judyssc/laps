@@ -13,22 +13,9 @@ public class UpdateLeaveController {
         this.employeeRepository = employeeRepository;
     }
        
-	private AnnualLeaveRepository annualLeaveRepository;
+	private LeaveRepository LeaveRepository;
     @Autowired
-    public void setAnnualLeaveRepository(AnnualLeaveRepository annualLeaveRepository) {
-        this.annualLeaveRepository = annualLeaveRepository;
+    public void setAnnualLeaveRepository(LeaveRepository LeaveRepository) {
+        this.LeaveRepository = LeaveRepository;
     }   
-    
-    private MedicalLeaveRepository medicalLeaveRepository;
-    @Autowired
-    public void setMedicalLeaveRepository(MedicalLeaveRepository medicalLeaveRepository) {
-        this.medicalLeaveRepository = medicalLeaveRepository;
-    }
-    
-    private CompLeaveRepository compLeaveRepository;
-    @Autowired
-    public void setCompLeaveRepository(CompLeaveRepository compLeaveRepository) {
-        this.compLeaveRepository = compLeaveRepository;
-    }
-
 }

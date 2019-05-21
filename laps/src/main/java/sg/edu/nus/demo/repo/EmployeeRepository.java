@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import sg.edu.nus.demo.model.Employee;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee,String> {
+public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 	
 	List<Employee> findByUserId(String userid);
 	

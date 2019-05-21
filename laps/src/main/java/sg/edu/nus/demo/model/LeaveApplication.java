@@ -4,20 +4,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "compensation_leave")
-public class CompLeave {
+@Table(name = "leave_application")
+public class LeaveApplication {
 
 	//DateTimeFormatter df = DateTimeFormatter.ofPattern("d-MMM-yyyy");
 	
 	@Id
-	private int cLeaveId;
-	//private String employeeId;
+	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	private int LeaveId;
 	private int daysApplied;
 	private LocalDateTime dateOfApplication;
 	private LocalDateTime startDate;
@@ -27,22 +29,22 @@ public class CompLeave {
 	private String workDissemination;
 	private int contactNo;
 	private String managerComments;
+	private String type;
 	
 	@ManyToOne
 	//@JoinColumn(name="employeeid") //make sure this ties with the table
-	@JoinColumn(referencedColumnName="id")
+	@JoinColumn(referencedColumnName="employeeid")
 	private Employee employee;
 	
-	public CompLeave() {
+	public LeaveApplication() {
 		super();
 	}
 	
-	
-	public CompLeave(/* String employeeId, */int daysApplied, LocalDateTime dateOfApplication,
-			LocalDateTime startDate, LocalDateTime endDate, String status, String reason, String workDissemination,
-			int contactNo, String managerComments, Employee employee) {
+	public LeaveApplication(int daysApplied, LocalDateTime dateOfApplication, LocalDateTime startDate,
+			LocalDateTime endDate, String status, String reason, String workDissemination, int contactNo,
+			String managerComments, String type, Employee employee) {
 		super();
-		//this.employeeId = employeeId;
+		
 		this.daysApplied = daysApplied;
 		this.dateOfApplication = dateOfApplication;
 		this.startDate = startDate;
@@ -52,26 +54,18 @@ public class CompLeave {
 		this.workDissemination = workDissemination;
 		this.contactNo = contactNo;
 		this.managerComments = managerComments;
+		this.type = type;
 		this.employee = employee;
 	}
 
-	public int getcLeaveId() {
-		return cLeaveId;
+	public int getLeaveId() {
+		return LeaveId;
 	}
 
 
-	public void setcLeaveId(int cLeaveId) {
-		this.cLeaveId = cLeaveId;
+	public void setLeaveId(int LeaveId) {
+		this.LeaveId = LeaveId;
 	}
-
-
-	/*
-	 * public String getEmployeeId() { return employeeId; }
-	 * 
-	 * 
-	 * public void setEmployeeId(String employeeId) { this.employeeId = employeeId;
-	 * }
-	 */
 
 
 	public int getDaysApplied() {
@@ -173,41 +167,21 @@ public class CompLeave {
 		this.employee = employee;
 	}
 	
-
-	/*
-	 * @Override public String toString() { return "CompLeave [cLeaveId=" + cLeaveId
-	 * + ", employeeId=" + employeeId + ", daysApplied=" + daysApplied +
-	 * ", dateOfApplication=" + dateOfApplication + ", startDate=" + startDate +
-	 * ", endDate=" + endDate + ", status=" + status + ", reason=" + reason +
-	 * ", workDissemination=" + workDissemination + ", contactNo=" + contactNo +
-	 * ", managerComments=" + managerComments + ", employee=" + employee + "]"; }
-	 */
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
-		return result;
+	public String getType() {
+		return type;
 	}
 
-	//assume view personal leave history by start_date
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CompLeave other = (CompLeave) obj;
-		if (startDate == null) {
-			if (other.startDate != null)
-				return false;
-		} else if (!startDate.equals(other.startDate))
-			return false;
-		return true;
+	public void setType(String type) {
+		this.type = type;
 	}
-		
+
+	@Override
+	public String toString() {
+		return "LeaveApplication [LeaveId=" + LeaveId + ", daysApplied=" + daysApplied + ", dateOfApplication="
+				+ dateOfApplication + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status
+				+ ", reason=" + reason + ", workDissemination=" + workDissemination + ", contactNo=" + contactNo
+				+ ", managerComments=" + managerComments + ", type=" + type + ", employee=" + employee + "]";
+	}
+			
 }
 

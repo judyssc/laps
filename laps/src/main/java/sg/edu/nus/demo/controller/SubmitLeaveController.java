@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import sg.edu.nus.demo.model.AnnualLeave;
-import sg.edu.nus.demo.model.LeaveType;
-import sg.edu.nus.demo.repo.AnnualLeaveRepository;
+import sg.edu.nus.demo.model.LeaveApplication;
 import sg.edu.nus.demo.repo.LeaveRepository;
 
 
@@ -24,18 +22,18 @@ public class SubmitLeaveController {
 	@GetMapping("/leaveform")
 	public String createNewLeave(Model model) {
 		
-		model.addAttribute("leave", new LeaveType());
+		model.addAttribute("leave", new LeaveApplication());
 		return "leaveform";
 	}
 	
 	@PostMapping("/leaveconfirmation")
-	public ModelAndView saveLeave(LeaveType leave) {
+	public ModelAndView saveLeave(LeaveApplication leave) {
 		leaveRepository.save(leave);
 		return new ModelAndView("leaveconfirmation","leave", leave);		
 	}
 	
 	@GetMapping("/leaveconfirmation")
-	public String confirmLeave(Model model, LeaveType leave) {		
+	public String confirmLeave(Model model, LeaveApplication leave) {		
 		model.addAttribute("leave", leave);
 		return "leaveconfirmation";
 	}

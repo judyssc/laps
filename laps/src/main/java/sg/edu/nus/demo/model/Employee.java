@@ -21,38 +21,32 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
-	private Integer employeeId; 
+	private int employeeId; 
 	private String employeeName;
 	private String userId;
 	private String password;
 	private String designation;
 	private String employeeType; //admin or pro(employee,manager)
-	private String managerId;
+	private int managerId;
 	private int annualLeaveBalance;
 	private int medicalLeaveBalance;
 	private int compLeaveBalance;
 	
-	@OneToMany(targetEntity=AnnualLeave.class, mappedBy="employee")
-	public Collection<AnnualLeave> annualLeaveList;
-	
-	@OneToMany(targetEntity=MedicalLeave.class, mappedBy="employee")
-	public Collection<MedicalLeave> medicalLeaveList;
-	
-	@OneToMany(targetEntity=CompLeave.class, mappedBy="employee")
-	public Collection<CompLeave> compLeaveList;
-	
+	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
+	public Collection<LeaveApplication> LeaveApplicationList;
+		
 	@ManyToOne 
 	//@JoinColumn(name="managerid")	 
-	@JoinColumn(name="id")	
+	@JoinColumn(name="mgr_id")	
 	private Manager manager; //assume each employee only one manager
 		
 	public Employee() {}
 	
-	public Employee(/* String employeeId, */String employeeName, String userId, String password, String designation,
-			String employeeType, String managerId, int annualLeaveBalance, int medicalLeaveBalance,
-			int compLeaveBalance, Collection<AnnualLeave> annualLeaveList, Manager manager) {
+	
+	public Employee(String employeeName, String userId, String password, String designation, String employeeType,
+			int managerId, int annualLeaveBalance, int medicalLeaveBalance, int compLeaveBalance,
+			Collection<LeaveApplication> leaveApplicationList, Manager manager) {
 		super();
-		/* this.employeeId = employeeId; */
 		this.employeeName = employeeName;
 		this.userId = userId;
 		this.password = password;
@@ -62,7 +56,7 @@ public class Employee {
 		this.annualLeaveBalance = annualLeaveBalance;
 		this.medicalLeaveBalance = medicalLeaveBalance;
 		this.compLeaveBalance = compLeaveBalance;
-		this.annualLeaveList = annualLeaveList;
+		LeaveApplicationList = leaveApplicationList;
 		this.manager = manager;
 		
 		if(designation=="developer")
@@ -77,11 +71,11 @@ public class Employee {
 		this.compLeaveBalance = 0;
 	}
 
-	public Integer getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Integer employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 
@@ -125,11 +119,11 @@ public class Employee {
 		this.employeeType = employeeType;
 	}
 
-	public String getManagerId() {
+	public int getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(String managerId) {
+	public void setManagerId(int managerId) {
 		this.managerId = managerId;
 	}
 
@@ -157,13 +151,16 @@ public class Employee {
 		this.compLeaveBalance = compLeaveBalance;
 	}
 
-	public Collection<AnnualLeave> getAnnualLeaveList() {
-		return annualLeaveList;
+	
+	public Collection<LeaveApplication> getLeaveApplicationList() {
+		return LeaveApplicationList;
 	}
 
-	public void setAnnualLeaveList(Collection<AnnualLeave> annualLeaveList) {
-		this.annualLeaveList = annualLeaveList;
+
+	public void setLeaveApplicationList(Collection<LeaveApplication> leaveApplicationList) {
+		LeaveApplicationList = leaveApplicationList;
 	}
+
 
 	public Manager getManager() {
 		return manager;
@@ -179,7 +176,7 @@ public class Employee {
 				+ ", password=" + password + ", designation=" + designation + ", employeeType=" + employeeType
 				+ ", managerId=" + managerId + ", annualLeaveBalance=" + annualLeaveBalance + ", medicalLeaveBalance="
 				+ medicalLeaveBalance + ", compLeaveBalance=" + compLeaveBalance + ", annualLeaveList="
-				+ annualLeaveList + ", manager=" + manager + "]";
+				+ LeaveApplicationList + ", manager=" + manager + "]";
 	}
 
 	@Override
