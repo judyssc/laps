@@ -7,7 +7,7 @@
 <body>
 <div class="container">
 		<div>
-			<form class="form-horizontal" th:object="${user}"
+			<form class="form-horizontal" th:object="${employee}"
 				th:action="@{/authenticateEmployee}" method="post">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Username:</label>
@@ -26,7 +26,6 @@
 						<button type="submit" class="btn btn-primary">Login</button>
 					</div>
 				</div>
-
 			</form>
 		</div>
 	</div>

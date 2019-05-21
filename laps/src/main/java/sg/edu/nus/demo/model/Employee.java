@@ -2,6 +2,7 @@ package sg.edu.nus.demo.model;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "employee")
@@ -21,14 +19,23 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	@Column(name = "employee_id")
 	private int employeeId; 
+	@Column(name = "employee_name")
 	private String employeeName;
+	@Column(name = "user_id")
 	private String userId;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "designation")
 	private String designation;
-	private String employeeType; //admin or pro(employee,manager)	
+	@Column(name = "employee_type")
+	private String employeeType; //admin or pro(employee,manager)
+	@Column(name = "annual_leave_balance")
 	private int annualLeaveBalance;
+	@Column(name = "medical_leave_balance")
 	private int medicalLeaveBalance;
+	@Column(name = "comp_leave_balance")
 	private int compLeaveBalance;
 	
 	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
