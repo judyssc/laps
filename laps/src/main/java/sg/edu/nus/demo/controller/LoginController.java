@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import sg.edu.nus.demo.javabean.User;
+import sg.edu.nus.demo.model.User;
 import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.service.LoginEmployeeService;
 
@@ -29,7 +29,7 @@ public class LoginController {
 		
 		// After keying in the username and password
 		LoginEmployeeService ls = new LoginEmployeeService();
-		boolean loginTrueFalse = true; //ls.authenticateEmployee(user.getUserId(), user.getPassword());
+		boolean loginTrueFalse = ls.authenticateEmployee(user.getUserId(), user.getPassword());
 	        //model.addAttribute("error", "Invalid username and/or password");
 
 		if(loginTrueFalse) {
