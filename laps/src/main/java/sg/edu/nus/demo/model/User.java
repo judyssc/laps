@@ -1,4 +1,4 @@
-package sg.edu.nus.demo.javabean;
+package sg.edu.nus.demo.model;
 
 //User verification during login process
 public class User {

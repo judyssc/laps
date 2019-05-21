@@ -1,5 +1,6 @@
 package sg.edu.nus.demo.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -11,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "leave_application")
 public class LeaveApplication {
@@ -21,9 +24,12 @@ public class LeaveApplication {
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	private int LeaveId;
 	private int daysApplied;
-	private LocalDateTime dateOfApplication;
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dateOfApplication;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate startDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate endDate;
 	private String status;
 	private String reason;
 	private String workDissemination;
@@ -33,15 +39,15 @@ public class LeaveApplication {
 	
 	@ManyToOne
 	//@JoinColumn(name="employeeid") //make sure this ties with the table
-	@JoinColumn(referencedColumnName="employeeid")
+	@JoinColumn(name="employeeId")
 	private Employee employee;
 	
 	public LeaveApplication() {
 		super();
 	}
 	
-	public LeaveApplication(int daysApplied, LocalDateTime dateOfApplication, LocalDateTime startDate,
-			LocalDateTime endDate, String status, String reason, String workDissemination, int contactNo,
+	public LeaveApplication(int daysApplied, LocalDate dateOfApplication, LocalDate startDate,
+			LocalDate endDate, String status, String reason, String workDissemination, int contactNo,
 			String managerComments, String type, Employee employee) {
 		super();
 		
@@ -78,32 +84,32 @@ public class LeaveApplication {
 	}
 
 
-	public LocalDateTime getDateOfApplication() {
+	public LocalDate getDateOfApplication() {
 		return dateOfApplication;
 	}
 
 
-	public void setDateOfApplication(LocalDateTime dateOfApplication) {
+	public void setDateOfApplication(LocalDate dateOfApplication) {
 		this.dateOfApplication = dateOfApplication;
 	}
 
 
-	public LocalDateTime getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
 
-	public void setStartDate(LocalDateTime startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
 
-	public LocalDateTime getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
 
-	public void setEndDate(LocalDateTime endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
