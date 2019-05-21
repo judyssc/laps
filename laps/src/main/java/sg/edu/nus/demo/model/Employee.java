@@ -27,7 +27,7 @@ public class Employee {
 	private String password;
 	private String designation;
 	private String employeeType; //admin or pro(employee,manager)
-	private int managerId;
+	
 	private int annualLeaveBalance;
 	private int medicalLeaveBalance;
 	private int compLeaveBalance;
@@ -44,7 +44,7 @@ public class Employee {
 	
 	
 	public Employee(String employeeName, String userId, String password, String designation, String employeeType,
-			int managerId, int annualLeaveBalance, int medicalLeaveBalance, int compLeaveBalance,
+			int annualLeaveBalance, int medicalLeaveBalance, int compLeaveBalance,
 			Collection<LeaveApplication> leaveApplicationList, Manager manager) {
 		super();
 		this.employeeName = employeeName;
@@ -52,7 +52,6 @@ public class Employee {
 		this.password = password;
 		this.designation = designation;
 		this.employeeType = employeeType;
-		this.managerId = managerId;
 		this.annualLeaveBalance = annualLeaveBalance;
 		this.medicalLeaveBalance = medicalLeaveBalance;
 		this.compLeaveBalance = compLeaveBalance;
@@ -119,14 +118,6 @@ public class Employee {
 		this.employeeType = employeeType;
 	}
 
-	public int getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(int managerId) {
-		this.managerId = managerId;
-	}
-
 	public int getAnnualLeaveBalance() {
 		return annualLeaveBalance;
 	}
@@ -169,14 +160,14 @@ public class Employee {
 	public void setManager(Manager manager) {
 		this.manager = manager;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", userId=" + userId
 				+ ", password=" + password + ", designation=" + designation + ", employeeType=" + employeeType
-				+ ", managerId=" + managerId + ", annualLeaveBalance=" + annualLeaveBalance + ", medicalLeaveBalance="
-				+ medicalLeaveBalance + ", compLeaveBalance=" + compLeaveBalance + ", annualLeaveList="
-				+ LeaveApplicationList + ", manager=" + manager + "]";
+				+ ", annualLeaveBalance=" + annualLeaveBalance + ", medicalLeaveBalance=" + medicalLeaveBalance
+				+ ", compLeaveBalance=" + compLeaveBalance + ", LeaveApplicationList=" + LeaveApplicationList
+				+ ", manager=" + manager + "]";
 	}
 
 	@Override
