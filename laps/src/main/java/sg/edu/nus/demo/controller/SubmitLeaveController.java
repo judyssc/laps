@@ -1,5 +1,8 @@
 package sg.edu.nus.demo.controller;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +25,20 @@ public class SubmitLeaveController {
 	@GetMapping("/leaveform")
 	public String createNewLeave(Model model) {
 		
-		model.addAttribute("leave", new LeaveApplication());
+		LeaveApplication leaveObject = new LeaveApplication();
+		leaveObject.setDateOfApplication(LocalDate.now());
+		
+		model.addAttribute("leave", leaveObject);
 		return "leaveform";
 	}
 	
 	@PostMapping("/leaveconfirmation")
 	public ModelAndView saveLeave(LeaveApplication leave) {
+		Period period = Period.between(leave.getStartDate(), leave.getEndDate());
+		leave.setDaysApplied(period.getDays());
+		leave.setStatus("Applied");
+		leave.setManagerComments("Awaiting manager's comments.");
+		
 		leaveRepository.save(leave);
 		return new ModelAndView("leaveconfirmation","leave", leave);		
 	}
