@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:action="@{/saveemp}" th:object="${empupdate}" method="post">
+employee id:<input type="text" name="employee id" th:value="${empupdate.employeeId}" th:field="*{employeeId}"><br/>
+employee name:<input type="text" name="employeename"  th:value="${empupdate.employeeName}" th:field="*{employeeName}"><br/>
+userId id:<input type="text" name="userId"  th:value="${empupdate.userId}" th:field="*{userId}"><br/>
+employee designation:<input type="text" name="employedesignation"  th:value="${empupdate.designation}" th:field="*{designation}"><br/>
+<div th:switch = "${empupdate.employeeType}">
+<p th:case="'employee'">Employeetype:<input type="radio" id="radioVal1" value="Manager" th:field="*{employeeType}">Manager
+<input type="radio" id="radioVal1" value="Employee" th:field="*{employeeType}">Employee
+<p th:case="'admin'">Employeetype:<input type="radio" id="radioVal1" value="Manager" th:field="*{employeeType}">Manager
+<input type="radio" id="radioVal1" value="Employee" th:field="*{employeeType}">Employee <input type="radio" id="radioVal1" value="admin" th:field="*{employeeType}">admin
+<p th:case ="'manager'">Employeetype:<input type="radio" id="radioVal1" value="manager" th:field="*{employeeType}">Manager
+</div>
+
+
+<button name="update employee" type ="submit" value="0">update employee</button>
+</form>
+</body>
+</html>

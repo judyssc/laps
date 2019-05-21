@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>Employeeid</th>
+<th>employeename</th>
+<th>getuserid</th>
+<th>password</th>
+<th>designation</th>
+<th>employeetype</th>
+<th>managerid</th>
+<th>annualleavebalance</th>
+<th>medicalleave balance</th>
+<th>comleavebalance</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="employee1 :${employee}">
+<td th:text="${employee1.getEmployeeId()}">Employeeid</td>
+<td><a th:href="${'/delup/' + employee1.getEmployeeId()}" class="btn btn-default" th:text = "${employee1.getEmployeeName()}">Name</a></td>
+<td th:text="${employee1.getUserId()}">getuserid</td>
+<td th:text="${employee1.getPassword()}">password</td>
+<td th:text="${employee1.getDesignation()}">designation</td>
+<td th:text="${employee1.getEmployeeType()}">employeetype</td>
+<td th:text="${employee1.getAnnualLeaveBalance()}">annualleavebalance</td>
+<td th:text="${employee1.getMedicalLeaveBalance()}">medicalleave balance</td>
+<td th:text="${employee1.getCompLeaveBalance()}">comleavebalance</td>
+</tr>
+</tbody>
+</table>
+
+
+<form action="#" th:action="@{/createemp}" th:object="${employee}" method="post">  
+
+<button name="create employee" type ="submit" value="0">create employee</button>
+</form>
+
+
+</body>
+</html>
