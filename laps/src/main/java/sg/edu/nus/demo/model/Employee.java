@@ -26,8 +26,7 @@ public class Employee {
 	private String userId;
 	private String password;
 	private String designation;
-	private String employeeType; //admin or pro(employee,manager)
-	
+	private String employeeType; //admin or pro(employee,manager)	
 	private int annualLeaveBalance;
 	private int medicalLeaveBalance;
 	private int compLeaveBalance;
