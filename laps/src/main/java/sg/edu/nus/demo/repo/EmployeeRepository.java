@@ -6,12 +6,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import sg.edu.nus.demo.model.Employee;
-import sg.edu.nus.demo.model.User;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, String> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-	@Query("SELECT e FROM Employee e where e.user_id = :name")
+	@Query("SELECT e FROM Employee e where e.userId = :name")
 	Employee findEmployeeByUserId(@Param("name") String name);
 	
 }

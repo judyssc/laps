@@ -19,23 +19,23 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
-	@Column(name = "employee_id")
+	@Column(name = "id")
 	private int employeeId; 
-	@Column(name = "employee_name")
+	@Column(name = "name")
 	private String employeeName;
-	@Column(name = "user_id")
+	@Column(name = "userid")
 	private String userId;
 	@Column(name = "password")
 	private String password;
 	@Column(name = "designation")
 	private String designation;
-	@Column(name = "employee_type")
+	@Column(name = "type")
 	private String employeeType; //admin or pro(employee,manager)
-	@Column(name = "annual_leave_balance")
+	@Column(name = "annualleavebal")
 	private int annualLeaveBalance;
-	@Column(name = "medical_leave_balance")
+	@Column(name = "medicalleavebal")
 	private int medicalLeaveBalance;
-	@Column(name = "comp_leave_balance")
+	@Column(name = "compleavebal")
 	private int compLeaveBalance;
 	
 	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
