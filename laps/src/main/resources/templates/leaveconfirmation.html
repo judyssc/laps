@@ -28,12 +28,12 @@
 			<td th:text="${leave.dateOfApplication}">Error</td>
 			<td th:text="${leave.startDate}">Error</td>
 			<td th:text="${leave.endDate}">Error</td>
-			<td th:text="${leave.status}">Error</td>
 			<td th:text="${leave.reason}">Error</td>
 			<td th:text="${leave.workDissemination}">Error</td>
 			<td th:text="${leave.contactNo}">Error</td>
 			<td th:text="${leave.managerComments}">Error</td>
 			<td th:text="${leave.type}">Error</td>
+			<td th:text="${leave.status}">Error</td>
 			<td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-default">Edit</a></td>
             <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/delete/' + leave.leaveId}" class="btn btn-danger">Delete</a></td>
             <td><a th:if="${leave.status !='Rejected'}" th:href="${'/leave/cancel/' + leave.leaveId}" class="btn btn-danger">Cancel</a></td>
