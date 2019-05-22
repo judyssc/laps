@@ -50,7 +50,8 @@ public class Employee {
 	
 	
 	public Employee(String employeeName, String userId, String password, String designation, String employeeType,
-			int annualLeaveBalance, int medicalLeaveBalance, int compLeaveBalance, Manager manager) {
+			int annualLeaveBalance, int medicalLeaveBalance, int compLeaveBalance,
+			Collection<LeaveApplication> leaveApplicationList, Manager manager) {
 		super();
 		this.employeeName = employeeName;
 		this.userId = userId;
@@ -60,6 +61,7 @@ public class Employee {
 		this.annualLeaveBalance = annualLeaveBalance;
 		this.medicalLeaveBalance = medicalLeaveBalance;
 		this.compLeaveBalance = compLeaveBalance;
+		LeaveApplicationList = leaveApplicationList;
 		this.manager = manager;
 		
 		if(designation=="developer")
