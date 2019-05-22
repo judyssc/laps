@@ -32,14 +32,18 @@ public class adminController {
 		System.out.println(empRepo.findAll());
 		return "showemp";
 	}
+
 	
+
+	
+
 	@GetMapping("/createemp")
 	public String createmp(Model model)
 	{
 		model.addAttribute("employe1",new Employee());
 		return "createEmp";
 	}
-	
+
 	@PostMapping("/createemp")
 	public String createemp(Model model)
 	{

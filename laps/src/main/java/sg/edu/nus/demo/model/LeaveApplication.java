@@ -1,11 +1,11 @@
 package sg.edu.nus.demo.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import java.time.format.DateTimeFormatter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,6 +25,8 @@ public class LeaveApplication {
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	@Column(name = "id")
 	private int LeaveId;
+	@Column(name = "employeeId")
+	private int employeeId;
 	@Column(name = "daysapplied")
 	private int daysApplied;
 	@Column(name = "dateofapplication")
@@ -49,9 +51,13 @@ public class LeaveApplication {
 	@Column(name = "type")
 	private String type;
 	
-	@ManyToOne
-	//@JoinColumn(name="employeeid") //make sure this ties with the table
-	@JoinColumn(name="employeeId")
+	
+	//@JoinColumn(name="employeeid") //make sure this ties with the table	
+//	@ManyToOne
+//	@Column(insertable = false, updatable = false)
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn( name="employeeId",insertable = false, updatable = false)
 	private Employee employee;
 	
 	public LeaveApplication() {
@@ -73,7 +79,7 @@ public class LeaveApplication {
 		this.contactNo = contactNo;
 		this.managerComments = managerComments;
 		this.type = type;
-		this.employee = employee;
+//		this.employee = employee;
 	}
 
 	public int getLeaveId() {
@@ -85,6 +91,11 @@ public class LeaveApplication {
 		this.LeaveId = LeaveId;
 	}
 
+	
+	 public int getEmployeeId() { return employeeId; }
+	 
+	  public void setEmployeeId(int employeeId) { this.employeeId = employeeId; }
+	
 
 	public int getDaysApplied() {
 		return daysApplied;
@@ -184,7 +195,7 @@ public class LeaveApplication {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
@@ -198,7 +209,7 @@ public class LeaveApplication {
 		return "LeaveApplication [LeaveId=" + LeaveId + ", daysApplied=" + daysApplied + ", dateOfApplication="
 				+ dateOfApplication + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status
 				+ ", reason=" + reason + ", workDissemination=" + workDissemination + ", contactNo=" + contactNo
-				+ ", managerComments=" + managerComments + ", type=" + type + ", employee=" + employee + "]";
+				+ ", managerComments=" + managerComments + ", type=" + type + ", employee="+ employee + " ]";
 	}
 			
 }
