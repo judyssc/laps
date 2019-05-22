@@ -74,6 +74,11 @@ public class SubmitLeaveController {
 				leave.setManagerComments("Not enough leave lah!");
 			}
 			
+			else if(!isWorkingDay(leave.getStartDate(), leave.getEndDate())) {
+				leave.setStatus("Rejected");
+				leave.setManagerComments("Leave start/end date cannot be a non-working day. Please check your date selection.");
+			}
+			
 			else {
 			employee.setAnnualLeaveBalance(employee.getAnnualLeaveBalance()-leave.getDaysApplied());
 			}
@@ -83,6 +88,11 @@ public class SubmitLeaveController {
 			if(employee.getMedicalLeaveBalance()-leave.getDaysApplied()<0) {
 				leave.setStatus("Rejected");
 				leave.setManagerComments("MC King ah you?! *#*@!*#(@");
+			}
+			
+			else if(!isWorkingDay(leave.getStartDate(), leave.getEndDate())) {
+				leave.setStatus("Rejected");
+				leave.setManagerComments("Leave start/end date cannot be a non-working day. Please check your date selection.");
 			}
 			
 			else {
@@ -95,49 +105,32 @@ public class SubmitLeaveController {
 				leave.setStatus("Rejected");
 				leave.setManagerComments("You where got OT so much!? Check leh!");
 			}
+			
+			else if(!isWorkingDay(leave.getStartDate(), leave.getEndDate())) {
+				leave.setStatus("Rejected");
+				leave.setManagerComments("Leave start/end date cannot be a non-working day. Please check your date selection.");
+			}
+			
 			else {
 			employee.setCompLeaveBalance(employee.getCompLeaveBalance()-leave.getDaysApplied());
 			}
 		}				
 		
-		if(leave.getStartDate().getDayOfWeek().toString().equals("SATURDAY") || leave.getStartDate().getDayOfWeek().toString().equals("SUNDAY") || isPublicHoliday(leave.getStartDate())) {
-			leave.setStatus("Rejected");
-			leave.setManagerComments("Don't dumb leh, dat day no need work u also wanna apply leave ah?!");
-			
-			if(leave.getType().equals("Annual")) {
-				employee.setAnnualLeaveBalance(employee.getAnnualLeaveBalance()+leave.getDaysApplied());
-			}
-			if(leave.getType().equals("Medical")) {
-				employee.setMedicalLeaveBalance(employee.getMedicalLeaveBalance()+leave.getDaysApplied());
-			}
-		
-			if(leave.getType().equals("Compensation")) {
-			employee.setCompLeaveBalance(employee.getCompLeaveBalance()+leave.getDaysApplied());
-			}
-		}
-		
-		if(leave.getEndDate().getDayOfWeek().toString().equals("SATURDAY") || leave.getEndDate().getDayOfWeek().toString().equals("SUNDAY") || isPublicHoliday(leave.getEndDate())) {
-			leave.setStatus("Rejected");
-			leave.setManagerComments("Don't dumb leh, dat day no need work u also wanna apply leave ah?!");
-			
-			if(leave.getType().equals("Annual")) {
-				employee.setAnnualLeaveBalance(employee.getAnnualLeaveBalance()+leave.getDaysApplied());
-			}
-			if(leave.getType().equals("Medical")) {
-				employee.setMedicalLeaveBalance(employee.getMedicalLeaveBalance()+leave.getDaysApplied());
-			}
-		
-			if(leave.getType().equals("Compensation")) {
-			employee.setCompLeaveBalance(employee.getCompLeaveBalance()+leave.getDaysApplied());
-			}
-
-		}
 		
 		leave.setEmployee(employee);		
 		leaveRepository.save(leave);		
 
 		model.addAttribute("leave", leave);
 		return "leaveconfirmation";		
+	}
+	
+	public boolean isWorkingDay(LocalDate startdate, LocalDate enddate) {
+		
+		if(startdate.getDayOfWeek().toString().equals("SATURDAY") || startdate.getDayOfWeek().toString().equals("SUNDAY") || enddate.getDayOfWeek().toString().equals("SUNDAY")||enddate.getDayOfWeek().toString().equals("SATURDAY")||isPublicHoliday(startdate)||isPublicHoliday(enddate)) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	@GetMapping("/leaveconfirmation/{employeeId}")
