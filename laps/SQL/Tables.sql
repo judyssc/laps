@@ -93,22 +93,3 @@ INSERT INTO `laps`.`leave_application` (`id`, `employee_id`, `daysapplied`, `dat
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('1', 'Annual Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('2', 'Medical Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('3', 'Compensation Leave');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 package sg.edu.nus.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,6 +13,7 @@ public class Calender {
 	
 	@Id
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(length=100)
 	private String date;
 	private String holiday_flag;
 	
