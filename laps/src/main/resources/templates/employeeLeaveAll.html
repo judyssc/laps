@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>ViewLeaveApplication</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(pesonalleave)}">
+        <table class="table table-striped">
+            <tr>
+                <th>StartDate</th>
+                <th>EndDate</th>
+                <th>Status</th>
+                <th>ManagerComments</th>                           
+            </tr>
+            <tr th:each="leave: ${pesonalleave}">
+                <td th:text="${leave.startDate}">StartDate</td>
+                <td th:text="${leave.endDate}">EndDate</td>
+                <td th:text="${leave.status}">Status</td>
+                <td th:text="${leave.managerComments}">ManagerComments</td>               
+                <td><a th:href="${'/viewdetails/'+leave.LeaveId}" class="btn btn-default">ViewLeaveDetails</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Confirmation page</title>
+</head>
+<body>
+	<h1>Leave Application Received</h1>
+	<p>Your leave application will be forwarded to your
+	manager for approval. Please check the details of your application below. </p>
+	<table>
+		<tr>
+			<th>Reference number</th>
+			<th>Days applied</th>
+			<th>Date of application</th>
+			<th>Start date of leave</th>
+			<th>End date of leave</th>
+			<th>Reason for application</th>
+			<th>Arrangements for your work duties</th>
+			<th>Your contact no</th>
+			<th>Manager comments</th>
+			<th>Leave type</th>	
+			<th>Application status</th>		
+		</tr>
+		<tr th:object=${leave}>
+			<td th:text="${leave.leaveId}">Error</td>
+			<td th:text="${leave.daysApplied}">Error</td>
+			<td th:text="${leave.dateOfApplication}">Error</td>
+			<td th:text="${leave.startDate}">Error</td>
+			<td th:text="${leave.endDate}">Error</td>
+			<td th:text="${leave.reason}">Error</td>
+			<td th:text="${leave.workDissemination}">Error</td>
+			<td th:text="${leave.contactNo}">Error</td>
+			<td th:text="${leave.managerComments}">Error</td>
+			<td th:text="${leave.type}">Error</td>
+			<td th:text="${leave.status}">Error</td>
+			<td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-default">Edit</a></td>
+            <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/delete/' + leave.leaveId}" class="btn btn-danger">Delete</a></td>
+            <td><a th:if="${leave.status !='Rejected'}" th:href="${'/leave/cancel/' + leave.leaveId}" class="btn btn-danger">Cancel</a></td>
+		</tr>
+	</table>
+	<p></p>
+	<a th:href="${'/leaveform'}" class="btn btn-default">Back to leave form</a>
+</body>
+</html>

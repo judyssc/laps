@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:action="@{/saveemp}" th:object="${employe1}" method="post">
+<h4>employee id:<input type="text" name="employee id" th:field="*{employeeId}"></h4><br/>
+<h4>employeeName:<input type="text" name="employee id" th:field="*{employeeName}"></h4><br/>
+<h4>userId:<input type="text" name="employee id" th:field="*{userId}"></h4><br/>
+<h4>password:<input type="text" name="employee id" th:field="*{password}"></h4><br/>
+<h4>designation:<input type="text" name="employee id" th:field="*{designation}"></h4><br/>
+<h4>Employeetype:<input type="radio" id="radioVal1" value="manager" th:field="*{employeeType}">Manager
+<input type="radio" id="radioVal1" value="employee" th:field="*{employeeType}">Employee
+<input type="radio" id="radioVal1" value="admin" th:field="*{employeeType}">Admin</h4>
+<h4>annualLeaveBalance:<input type="text" name="employee id" th:field="*{annualLeaveBalance}"></h4><br/>
+<h4>medicalLeaveBalance:<input type="text" name="employee id" th:field="*{medicalLeaveBalance}"></h4><br/>
+<h4>compLeaveBalance:<input type="text" name="employee id" th:field="*{compLeaveBalance}"></h4><br/>
+<h4><button name="submit" type ="submit" value="0">submit</button></h4>
+</form>
+</body>
+</html>
