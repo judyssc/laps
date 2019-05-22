@@ -2,6 +2,7 @@ package sg.edu.nus.demo.model;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +19,13 @@ public class Manager {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	@Column(name = "id")
 	private int mgrId;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "userid")
 	private String userid;
+	@Column(name = "password")
 	private String password;
 	
 	public Manager() {}

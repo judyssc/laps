@@ -1,5 +1,6 @@
 package sg.edu.nus.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +16,13 @@ public class Administrator {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
 	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	@Column(name = "id")
 	private int adminId;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "userid")
 	private String userId;
+	@Column(name = "password")
 	private String password;
 	
 	public Administrator() {}

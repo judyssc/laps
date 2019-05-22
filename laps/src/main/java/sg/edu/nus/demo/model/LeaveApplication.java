@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,19 +23,30 @@ public class LeaveApplication {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	@Column(name = "id")
 	private int LeaveId;
+	@Column(name = "daysapplied")
 	private int daysApplied;
+	@Column(name = "dateofapplication")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateOfApplication;
+	@Column(name = "startdate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate startDate;
+	@Column(name = "enddate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate endDate;
+	@Column(name = "status")
 	private String status;
+	@Column(name = "reason")
 	private String reason;
+	@Column(name = "workdissemination")
 	private String workDissemination;
+	@Column(name = "contactno")
 	private int contactNo;
+	@Column(name = "managercomments")
 	private String managerComments;
+	@Column(name = "type")
 	private String type;
 	
 	@ManyToOne
