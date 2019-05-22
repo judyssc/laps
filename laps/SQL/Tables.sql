@@ -42,7 +42,7 @@ CREATE TABLE `laps`.`employee` (
   
   CREATE TABLE `laps`.`leave_application` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `employeeid` INT NULL,
+  `employee_id` INT NULL,
   `daysapplied` INT NULL,
   `dateofapplication` DATETIME NULL,
   `startdate` DATETIME NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `laps`.`employee` (
   `type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `LID_FK`
-    FOREIGN KEY (`employeeid`)
+    FOREIGN KEY (`employee_id`)
     REFERENCES `laps`.`employee` (`id`));
     
       
@@ -88,7 +88,7 @@ INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`
 INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('8', 'Yvonne', 'yvonne', 'password', 'developer', 'employee', '2', '14', '60', '0');
 INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('9', 'Xiaolin', 'xiaolin', 'password', 'developer', 'employee', '2', '14', '60', '0');
 
-INSERT INTO `laps`.`leave_application` (`id`, `employeeid`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`, `type`) VALUES ('1', '1', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Kishore', '12345678', 'no comment', 'annual');
+INSERT INTO `laps`.`leave_application` (`id`, `employee_id`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`, `type`) VALUES ('1', '1', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Kishore', '12345678', 'no comment', 'annual');
 
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('1', 'Annual Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('2', 'Medical Leave');
