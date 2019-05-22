@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<th:block th:include="/layout/admin_header"></th:block>
+
 </head>
 <body>
-	<form action="#" th:action="@{/add_holidays}" th:object="${calender}"
+	<form action="#" th:action="@{/admin/add_holidays}" th:object="${calender}"
 		method="post">
-		
+
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Date:</label>
 			<div class="col-sm-10">
@@ -21,12 +23,11 @@
 			</div>
 		</div>
 		<div class="form-group">
-					<div class="col-sm-2">
-						<button type="submit" class="btn btn-primary">Save</button>
-					</div>
-				</div>
-				
-				<div><label>><a th:href="${'/admin'}"> Go back </a></label></div>
-</form>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">Save</button>
+			</div>
+		</div>
+
+	</form>
 </body>
 </html>

@@ -44,7 +44,7 @@ public class adminController {
 	}
 	
 	
-	@GetMapping("/list_holidays")
+	@GetMapping("/admin/list_holidays")
 	public String listholiday(Model model) {
 		model.addAttribute("holidays",calRepo.findAll());
 		System.out.println(calRepo.findAll());
@@ -52,50 +52,50 @@ public class adminController {
 		return "listholiday";
 	}
 	
-	@GetMapping("/add_holidays")
+	@GetMapping("/admin/add_holidays")
 	public String formeditgetholiday(Model model) {
 		model.addAttribute("calender",new Calender());
 		return "editholiday";
 	}
 	
-	@PostMapping("/add_holidays")
+	@PostMapping("/admin/add_holidays")
 	public String formeditpostholiday(Calender cal,Model model) {
 		calRepo.save(cal);
 		model.addAttribute("holidays",calRepo.findAll());
-		return "redirect:/list_holidays";
+		return "redirect:/admin/list_holidays";
 	}
-	@GetMapping("/delete_holidays/{date}")
+	@GetMapping("/admin/delete_holidays/{date}")
 	public String delete_holidays(@PathVariable String date ,Model model) {
 		calRepo.deleteById(date);
-		return "redirect:/list_holidays";
+		return "redirect:/admin/list_holidays";
 	}
 	
 	
 	
-	@GetMapping("/list_leavetypes")
+	@GetMapping("/admin/list_leavetypes")
 	public String list_leavetypes(Model model) {
 		model.addAttribute("leave_types",leaveRepo.findAll());
 		System.out.println(leaveRepo.findAll());
 		return "listleavetypes";
 	}
 	
-	@GetMapping("/add_leavetypes")
+	@GetMapping("/admin/add_leavetypes")
 	public String add_leavetypes(Model model) {
 		model.addAttribute("leave_types",new LeaveType());
 		return "addleavetypes";
 	}
 	
-	@PostMapping("/add_leavetypes")
+	@PostMapping("/admin/add_leavetypes")
 	public String add_leavetypes_(LeaveType lt,Model model) {
 		leaveRepo.save(lt);
 		model.addAttribute("leave_types",leaveRepo.findAll());
-		return "redirect:/list_leavetypes";
+		return "redirect:/admin/list_leavetypes";
 	}
-	@GetMapping("/delete_leavetypes/{id}")
+	@GetMapping("/admin/delete_leavetypes/{id}")
 	public String delete_leavetypes(@PathVariable int id ,Model model) {
 		
 		leaveRepo.deleteById(id);
-		return "redirect:/list_leavetypes";
+		return "redirect:/admin/list_leavetypes";
 	}
 	
 	

@@ -1,0 +1,57 @@
+/* @charset "ISO-8859-1"; */
+
+/* body { */
+/*     font-family: 'verdana'; */
+/* } */
+
+/* h1{ */
+/* 	font-family: 'verdana'; */
+/*     text-align: center; */
+/* } */
+
+/* table {     */
+/*     border: 0; */
+/*     line-height: 1.8; */
+/*     font-family: 'verdana'; */
+/*     background-color: white; */
+/* } */
+
+/* input[type=text] { */
+/*   width: 60%; */
+/*   padding: 12px 20px; */
+/*   margin: 8px 0; */
+/*   box-sizing: border-box; */
+/* } */
+
+/* input[type=submit] { */
+/*   font-family: Verdana; */
+/*   color: white; */
+/*   background: #4CAF50; */
+/*   border: none; */
+/*   padding: 16px 32px; */
+/*   margin: 4px 2px; */
+/*   cursor: pointer; */
+/* } */
+
+/* .button { */
+/*     width: 100px; */
+/*     height: 30px; */
+/*     background-color: #E1E8EE; */
+/*     border-radius: 6px; */
+/*     border: none; */
+/*     cursor: pointer; */
+/* } */
+
+
+.navbar-default{
+	background: #6db33f;
+}
+
+.navbar-default .navbar-brand{
+	color:white;
+}
+
+
+.navbar-default .navbar-nav >li> a{
+	color:white;
+}
