@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th>Employeeid</th>
+<th>employeename</th>
+<th>getuserid</th>
+<th>designation</th>
+<th>employeetype</th>
+<th>annualleavebalance</th>
+<th>medicalleave balance</th>
+</tr>
+</thead>
+<tr>
+
+<td th:text="${employedelup.getEmployeeId()}">EmployeeId</td>
+<td th:text="${employedelup.getEmployeeName()}">EmployeeName</td>
+<td th:text="${employedelup.getUserId()}">UserId</td>
+<td th:text="${employedelup.getDesignation()}">Designation</td>
+<td th:text="${employedelup.getEmployeeType()}">EmployeeType</td>
+<td th:text="${employedelup.getAnnualLeaveBalance()}">AnnualLeaveBalance</td>
+<td th:text="${employedelup.getMedicalLeaveBalance()}">MedicalLeaveBalance</td>
+</tr>
+</table>
+
+<a th:href="${'/updateempid/' + employedelup.getEmployeeId()}" class="btn btn-default" >Update employee</a> &emsp;&emsp;&emsp;&emsp;&emsp;
+<a th:href="${'/deleteempid/' + employedelup.getEmployeeId()}" class="btn btn-default" >Delete employee</a>
+
+</body>
+</html>
