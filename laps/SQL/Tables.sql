@@ -61,7 +61,7 @@ CREATE TABLE `laps`.`employee` (
       
     CREATE TABLE `laps`.`leave_types` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
+  `type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `laps`.`calendar` (
@@ -72,24 +72,24 @@ CREATE TABLE `laps`.`calendar` (
   `holiday_flag` CHAR(1) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Felicia', 'felicia', 'password');
-INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('2', 'Judy', 'judy', 'password');
+INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Felicia', 'felicia', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('2', 'Judy', 'judy', '5f4dcc3b5aa765d61d8327deb882cf99');
 
-INSERT INTO `laps`.`administrator` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Dhilip', 'dhilip', 'password');
-INSERT INTO `laps`.`administrator` (`id`, `name`, `userid`, `password`) VALUES ('2', 'Leesiong', 'leesiong', 'password');
+INSERT INTO `laps`.`administrator` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Dhilip', 'dhilip', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `laps`.`administrator` (`id`, `name`, `userid`, `password`) VALUES ('2', 'Leesiong', 'leesiong', '5f4dcc3b5aa765d61d8327deb882cf99');
 
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('1', 'Chenghao', 'chenghao', 'password', 'developer', 'employee', '1', '14', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('2', 'Dhilip', 'dhilip', 'password', 'developer', 'admin', '1', '14', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('3', 'Felicia', 'felicia', 'password', 'teamlead', 'manager', '1', '18', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('4', 'Guoan', 'guoan', 'password', 'developer', 'employee', '1', '14', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('5', 'Judy', 'judy', 'password', 'teamlead', 'manager', '2', '18', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('6', 'Kishore', 'kishore', 'password', 'developer', 'employee', '2', '14', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('7', 'Leesiong', 'leesiong', 'password', 'developer', 'admin', '2', '14', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('8', 'Yvonne', 'yvonne', 'password', 'developer', 'employee', '2', '14', '60', '0');
-INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('9', 'Xiaolin', 'xiaolin', 'password', 'developer', 'employee', '2', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('1', 'Chenghao', 'chenghao', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'employee', '1', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('2', 'Dhilip', 'dhilip', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'admin', '1', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('3', 'Felicia', 'felicia', '5f4dcc3b5aa765d61d8327deb882cf99', 'teamlead', 'manager', '1', '18', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('4', 'Guoan', 'guoan', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'employee', '1', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('5', 'Judy', 'judy', '5f4dcc3b5aa765d61d8327deb882cf99', 'teamlead', 'manager', '2', '18', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('6', 'Kishore', 'kishore', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'employee', '2', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('7', 'Leesiong', 'leesiong', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'admin', '2', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('8', 'Yvonne', 'yvonne', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'employee', '2', '14', '60', '0');
+INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('9', 'Xiaolin', 'xiaolin', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'employee', '2', '14', '60', '0');
 
 INSERT INTO `laps`.`leave_application` (`id`, `employee_id`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`, `type`) VALUES ('1', '1', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Kishore', '12345678', 'no comment', 'annual');
 
-INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('1', 'Annual Leave');
-INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('2', 'Medical Leave');
-INSERT INTO `laps`.`leave_types` (`id`, `name`) VALUES ('3', 'Compensation Leave');
+INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('1', 'Annual Leave');
+INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('2', 'Medical Leave');
+INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('3', 'Compensation Leave');
