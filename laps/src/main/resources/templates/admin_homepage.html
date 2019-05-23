@@ -3,15 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<th:block th:include="/layout/admin_header"></th:block>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../static/css/style.css" />
 </head>
 <body>
 
-
-<h1><a th:href="${'/createemp'}"> Add new employee</a></h1>
-<h1><a th:href="${'/add_holidays'}" > Add Public Holidays</a></h1>
-<h1><a th:href="${'/list_holidays'}"> List Public Holidays</a></h1>
-<h1><a th:href="${'/list_leavetypes'}"> List Leave types</a></h1>
-<h1><a th:href="${'/add_leavetypes'}" > Add new Leave type</a></h1>
+This is a landing page
+<!-- <h1><a th:href="${'/createemp'}"> Add new employee</a></h1> -->
+<!-- <h1><a th:href="${'/add_holidays'}" > Add Public Holidays</a></h1> -->
+<!-- <h1><a th:href="${'/list_holidays'}"> List Public Holidays</a></h1> -->
+<!-- <h1><a th:href="${'/list_leavetypes'}"> List Leave types</a></h1> -->
+<!-- <h1><a th:href="${'/add_leavetypes'}" > Add new Leave type</a></h1> -->
 
 </body>
 </html>
