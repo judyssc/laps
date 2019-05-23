@@ -32,8 +32,8 @@ public class DataLoader implements CommandLineRunner {
 		
 		
 		  Manager managerTest = new Manager("Ah hua", "hua", "h123"); Employee
-		  employeeTest = new Employee("Lee Siong", "abc",
-		  "abc123","Slave","employee",18,60,0, managerTest);
+		  employeeTest = new Employee("Bran the Broken", "abc",
+		  "5f4dcc3b5aa765d61d8327deb882cf99","Slave","employee",18,60,0, managerTest);
 		  
 		  mgrRepo.save(managerTest); empRepo.save(employeeTest);
 		 
