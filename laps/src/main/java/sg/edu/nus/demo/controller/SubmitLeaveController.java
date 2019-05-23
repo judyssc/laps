@@ -3,6 +3,7 @@ package sg.edu.nus.demo.controller;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
+import sg.edu.nus.demo.repo.CalenderRepository;
 import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.LeaveRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
@@ -30,6 +32,13 @@ public class SubmitLeaveController {
 	private EmployeeRepository empRepo;
 	private ManagerRepository mgrRepo; 
 	
+	private CalenderRepository calRepo;
+	
+	@Autowired
+	public void setCalRepo(CalenderRepository calRepo) {
+		this.calRepo = calRepo;
+	}
+
 	@Autowired
 	public void setLeaveRepository(LeaveRepository leaveRepository) {
 		this.leaveRepository = leaveRepository;
@@ -145,7 +154,7 @@ public class SubmitLeaveController {
 		return "leaveconfirmation";
 	}
 	
-	public static int getWorkingDays(LocalDate startDate, LocalDate endDate ) {
+	public int getWorkingDays(LocalDate startDate, LocalDate endDate ) {
 		
 		int countWorkDays = 0;
 		
@@ -181,22 +190,26 @@ public class SubmitLeaveController {
 	}
 	
 	
-	public static boolean isPublicHoliday(LocalDate dateToCheck) {
+	public boolean isPublicHoliday(LocalDate dateToCheck) {
 		
-		HashMap<String, LocalDate> listOfPublicHolidays = new HashMap<String, LocalDate>();
-		listOfPublicHolidays.put("New Year's Day", LocalDate.of(2019, 1, 1));
-		listOfPublicHolidays.put("Chinese New Year", LocalDate.of(2019, 2, 5));
-		listOfPublicHolidays.put("Chinese New Year", LocalDate.of(2019, 2, 6));
-		listOfPublicHolidays.put("Good Friday", LocalDate.of(2019, 4, 19));
-		listOfPublicHolidays.put("Labour Day", LocalDate.of(2019, 5, 1));
-		listOfPublicHolidays.put("Vesak Day", LocalDate.of(2019, 5, 20));
-		listOfPublicHolidays.put("Hari Raya Puasa", LocalDate.of(2019, 6, 5));
-		listOfPublicHolidays.put("National Day", LocalDate.of(2019, 8, 9));
-		listOfPublicHolidays.put("Hari Raya Haji", LocalDate.of(2019, 8, 12));
-		listOfPublicHolidays.put("Deepavali", LocalDate.of(2019, 10, 28));
-		listOfPublicHolidays.put("Christmas", LocalDate.of(2019, 12, 25));
+		ArrayList<LocalDate> listPB = calRepo.listofPublicHolidays();
 		
-		return listOfPublicHolidays.containsValue(dateToCheck);
+		/*
+		 * HashMap<String, LocalDate> allPublicHolidays = new HashMap<String,
+		 * LocalDate>(); listOfPublicHolidays.put("New Year's Day", LocalDate.of(2019,
+		 * 1, 1)); listOfPublicHolidays.put("Chinese New Year", LocalDate.of(2019, 2,
+		 * 5)); listOfPublicHolidays.put("Chinese New Year", LocalDate.of(2019, 2, 6));
+		 * listOfPublicHolidays.put("Good Friday", LocalDate.of(2019, 4, 19));
+		 * listOfPublicHolidays.put("Labour Day", LocalDate.of(2019, 5, 1));
+		 * listOfPublicHolidays.put("Vesak Day", LocalDate.of(2019, 5, 20));
+		 * listOfPublicHolidays.put("Hari Raya Puasa", LocalDate.of(2019, 6, 5));
+		 * listOfPublicHolidays.put("National Day", LocalDate.of(2019, 8, 9));
+		 * listOfPublicHolidays.put("Hari Raya Haji", LocalDate.of(2019, 8, 12));
+		 * listOfPublicHolidays.put("Deepavali", LocalDate.of(2019, 10, 28));
+		 * listOfPublicHolidays.put("Christmas", LocalDate.of(2019, 12, 25));
+		 */
+		
+		return listPB.contains(dateToCheck);
 	}
 	
 	
