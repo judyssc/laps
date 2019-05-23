@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import sg.edu.nus.demo.model.Administrator;
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.Manager;
+import sg.edu.nus.demo.repo.AdministratorRepository;
 import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
 import sg.edu.nus.demo.service.LoginService;
@@ -28,6 +29,9 @@ public class LoginController {
 	
 	@Autowired
 	private ManagerRepository managerRepository;
+	
+	@Autowired
+	private AdministratorRepository administratorRepository;
 	
 	//Employee login
 	@GetMapping("/login/employee")
@@ -89,11 +93,12 @@ public class LoginController {
 		boolean loginTrueFalse = loginService.authenticateAdministrator(administrator.getUserId(), administrator.getPassword());
 
 		if(loginTrueFalse) {
+			Administrator admin = administratorRepository.findAdministratorByUserId(administrator.getUserId());
 			model.addAttribute("administrator", administrator);
 			return "loginsuccessfuladministrator";
 		}
 		else {
 			return "loginadministrator";
-			}
 		}
+	}
 }
