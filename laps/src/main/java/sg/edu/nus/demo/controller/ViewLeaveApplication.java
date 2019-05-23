@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
+import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.ViewLeaveRepository;
 
 
@@ -20,10 +23,15 @@ public class ViewLeaveApplication {
 	public void setRep(ViewLeaveRepository rep) {
 		this.rep = rep;
 	}
-
+	private EmployeeRepository empRepo;
+	@Autowired
+	public void setEmpRepo(EmployeeRepository empRepo) {
+		this.empRepo = empRepo;
+	}
+	
 	@RequestMapping(path="/viewleave/{employeeId}", method = RequestMethod.GET)
 	public String viewLeaveApplication (@PathVariable("employeeId") int employeeId ,Model model) {
-		
+		Employee emp = empRepo.findById(employeeId).orElse(null);
 		ArrayList<LeaveApplication> listnew =new ArrayList<LeaveApplication> ();
 		
 		ArrayList<LeaveApplication> lista =(ArrayList<LeaveApplication>)rep.findLeaveApplicationByEID(employeeId);		
@@ -37,16 +45,18 @@ public class ViewLeaveApplication {
 		    	}
 		    }	
 			model.addAttribute("pesonalleave",listnew);
-		
+			model.addAttribute("employee",emp);		
 		return "employeeLeaveAll";
 	}
 	
 	@RequestMapping(path="/viewdetails/{LeaveId}", method = RequestMethod.GET)
 	private String viewLeaveDetails(Model model,@PathVariable("LeaveId") int id ) {	
 		
-	    model.addAttribute("leave",rep.findById(id).orElse(null));
+		LeaveApplication leaveObject = rep.findById(id).orElse(null);
+		Employee employee = empRepo.findById(leaveObject.getEmployeeId()).orElse(null);
+		model.addAttribute("leave", leaveObject);
+		model.addAttribute("employee", employee); 			
 		return "employeeLeaveDetails";
 	}
-	
 
 }
