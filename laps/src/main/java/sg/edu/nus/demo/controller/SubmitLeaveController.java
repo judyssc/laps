@@ -69,9 +69,10 @@ public class SubmitLeaveController {
 	
 	@PostMapping("/leaveconfirmation/{employeeId}")
 	public String saveLeave(Model model, LeaveApplication leave, @PathVariable int employeeId) {
-		
 		leave.setDaysApplied(getWorkingDays(leave.getStartDate(), leave.getEndDate()));
+		if(leave.getLeaveId()==0) {
 		leave.setStatus("Applied");
+		}
 		leave.setManagerComments("Awaiting manager's comments.");
 		
 		Employee employee = empRepo.findById(employeeId).orElse(null);		
