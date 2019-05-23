@@ -39,8 +39,8 @@ public class LoginController {
 		boolean loginTrueFalse = loginService.authenticateEmployee(employee.getUserId(), employee.getPassword());
 
 		if(loginTrueFalse) {
-			Employee emp = employeeRepository.findEmployeeByUserId(employee.getUserId());
-			model.addAttribute("employee", employee);
+			Employee emp = employeeRepository.findEmployeeByUserId(employee.getUserId());		
+			model.addAttribute("employee", emp);
 			return "index";
 		}
 		else {
