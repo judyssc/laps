@@ -38,7 +38,8 @@ public class Employee {
 	private int medicalLeaveBalance;
 	@Column(name = "compleavebal")
 	private int compLeaveBalance;
-	private int mgr_id;
+	//private int mgr_id;
+	
 	
 	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
 	public Collection<LeaveApplication> LeaveApplicationList;
