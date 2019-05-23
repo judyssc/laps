@@ -124,6 +124,22 @@ public class adminController {
 		model.addAttribute("employe1",new Employee());
 		return "createEmp";
 	}
+	@PostMapping("/saveemp1")
+	public String saveemp1(Employee emp)
+	{
+		System.out.println(emp.getDesignation());
+		if(emp.getDesignation().equals("teamlead"))
+		{
+			emp.setAnnualLeaveBalance(18);
+			empRepo.save(emp);
+			
+		}else if(emp.getDesignation().equals("developer")) {
+			emp.setAnnualLeaveBalance(14);
+			empRepo.save(emp);
+		}
+		return "redirect:/showemp";
+		
+	}
 	@PostMapping("/saveemp") 
 	public String saveemployee(Employee emp) {
 		
