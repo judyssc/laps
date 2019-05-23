@@ -13,6 +13,7 @@ import sg.edu.nus.demo.model.Administrator;
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.Manager;
 import sg.edu.nus.demo.repo.EmployeeRepository;
+import sg.edu.nus.demo.repo.ManagerRepository;
 import sg.edu.nus.demo.service.LoginService;
 
 @Controller
@@ -24,6 +25,9 @@ public class LoginController {
 	
 	@Resource
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private ManagerRepository managerRepository;
 	
 	//Employee login
 	@GetMapping("/login/employee")
@@ -62,8 +66,9 @@ public class LoginController {
 		boolean loginTrueFalse = loginService.authenticateManager(manager.getUserid(), manager.getPassword());
 
 		if(loginTrueFalse) {
-			model.addAttribute("manager", manager);
-			return "loginsuccessfulmanager";
+			Manager mgr = managerRepository.findManagerByUserId(manager.getUserid());
+			model.addAttribute("manager", mgr);
+			return "index_mgr";
 		}
 		else {
 			return "loginmanager";
