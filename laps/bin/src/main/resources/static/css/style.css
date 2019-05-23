@@ -1,0 +1,72 @@
+.navbar-default {
+    background: #6db33f;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+#table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#login-body {
+    font-family: 'verdana';
+    font-size : 20pt;
+    max-width: 500px;
+	margin: auto;
+}
+
+#login-text {
+  font-family: 'verdana';
+  font-size : 25pt;
+  width: 60%;
+  padding: 5px 5px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+#login-password {
+  font-family: 'verdana';
+  font-size : 25pt;
+  width: 60%;
+  padding: 5px 5px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+#login-btn {
+	font-family: 'verdana';
+  	font-size : 25pt;
+    width: 60%;
+    height: 60px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 5px;
+  	margin: 5px 0;
+}

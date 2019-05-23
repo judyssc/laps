@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>LeaveApplications</title>
+<style>  
+table{ 
+    width: 100%
+}  
+table, th, td {
+	border: 1px solid black;  
+    border-collapse: collapse;
+    padding: 10px;
+}
+</style>  
+</head>
+<body>
+<div class="container">
+	<div>
+	<h2>View Leave Applications</h2>
+	<table>
+		<tr>
+			<th>Date of Application</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Reason</th>
+			<th>Leave Status</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="leave : ${leaves}">
+			
+			<th th:text="${leave.dateOfApplication}">Date of Application</th>
+			<th th:text="${leave.startDate}">Start Date</th>
+			<th th:text="${leave.endDate}">End Date</th>
+			<th th:text="${leave.reason}">Reason</th>
+			<th th:text="${leave.status}">Leave Status</th>               
+            <td>
+            	<a th:href="${'/updateleave/' + leave.getLeaveId()}" class="btn btn-default">Update</a>
+            </td>
+		</tr>
+	</table>
+	</div>
+</div>
+</body>
+</html>

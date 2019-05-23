@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:include="/layout/admin_header"></th:block>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../static/css/style.css" />
+</head>
+<body>
+
+	<table id="table">
+		<tr>
+			<th>Sl no</th>
+			<th>Type of leave available</th>
+			<th></th>
+		</tr>
+		<tr th:each="item : ${leave_types}">
+			<td th:text="${itemStat.index+1}">""</td>
+			<td th:text="${item.type}">""</td>
+			<td><a th:href="${'/admin/delete_leavetypes/'+ item.id}">Delete me</a></td>
+		</tr>
+	</table>
+
+<!-- 	<div> -->
+<!-- 		<label><a th:href="${'/add_leavetypes'}">Add new </a></label> -->
+<!-- 	</div> -->
+
+<!-- 	<div> -->
+<!-- 		<label>><a th:href="${'/admin'}"> Go back </a></label> -->
+<!-- 	</div> -->
+</body>
+</html>

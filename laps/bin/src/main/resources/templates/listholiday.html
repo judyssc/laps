@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<th:block th:include="/layout/admin_header"></th:block>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../static/css/style.css" />
+</head>
+<body>
+
+	<table id="table">
+		<tr>
+			<th>Date</th>
+			<th>Description / Comments</th>
+			<th></th>
+		</tr>
+		<tr th:each="item : ${holidays}">
+			<td th:text="${item.getDate()}">""</td>
+			<td th:text="${item.getHoliday_flag()}">""</td>
+			<td><a th:href="${'/admin/delete_holidays/'+ item.getDate()}">Delete
+					me</a></td>
+		</tr>
+	</table>
+<!-- 	<div> -->
+<!-- 		<label><a th:href="${'/add_holidays'}">Add new Holiday</a></label> -->
+<!-- 	</div> -->
+
+<!-- 	<div> -->
+<!-- 		<label>><a th:href="${'/admin'}"> Go back </a></label> -->
+<!-- 	</div> -->
+
+</body>
+</html>
