@@ -3,23 +3,63 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/style_general.css}"
-	href="../../static/CSS/style_general.css" />
+<th:block th:include="/layout/admin_header"></th:block>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../static/css/style.css" />
 </head>
 <body>
 <form action="#" th:action="@{/saveemp1}" th:object="${employe1}" method="post">
-<h4>employeeName:<input type="text" name="employee id" th:field="*{employeeName}"></h4><br/>
-<h4>userId:<input type="text" name="employee id" th:field="*{userId}"></h4><br/>
-<h4>password:<input type="text" name="employee id" th:field="*{password}"></h4><br/>
-<h4>Employeetype:<input type="radio" id="radioVal1" value="manager" th:field="*{employeeType}">Manager
+<table th:align="center">
+<tr>
+<td>
+<h4>EmployeeName:</h4></td>
+<td><input type="text" name="employee id" th:field="*{employeeName}"></td>
+</tr>
+<tr>
+<td>
+<h4>UserId:</h4></td><td><input type="text" name="employee id" th:field="*{userId}"><br/>
+</td>
+</tr>
+<tr>
+<td>
+<h4>password:</h4></td><td><input type="text" name="employee id" th:field="*{password}"><br/>
+</td>
+</tr>
+<tr>
+<td>
+<h4>Employeetype:</h4></td><td><h4><input type="radio" id="radioVal1" value="manager" th:field="*{employeeType}">Manager
+
 <input type="radio" id="radioVal1" value="employee" th:field="*{employeeType}">Employee
 <input type="radio" id="radioVal1" value="admin" th:field="*{employeeType}">Admin</h4>
-<h4>Employee designation:<input type="radio" id="radioVal1" value="teamlead" th:field="*{designation}">TeamLead
-<input type="radio" id="radioVal1" value="developer" th:field="*{designation}">Developer</h4>
+</td>
+</tr>
+<tr>
+<td>
+<h4>Employee designation:</h4></td><td><h4><input type="radio" id="radioVal1" value="teamlead" th:field="*{designation}">TeamLead
+<input type="radio" id="radioVal1" value="developer" th:field="*{designation}">Developer</h4></td>
+
+</tr>
+<tr>
+<td>
 <input type="hidden" name="annualLeaveBalance" value="14"><br/>
+</td>
+</tr>
+<tr>
+<td>
 <input type="hidden" name="medicalLeaveBalance" value="60" >
+</td>
+</tr>
+<tr>
+<td>
 <input type="hidden" name="compLeaveBalance" value="0"><br/>
+</td>
+</tr>
+<tr>
+<td>
 <h4><button name="submit" type ="submit" value="0">submit</button></h4>
+</td>
+</tr>
+</table>
 </form>
 </body>
 </html>
