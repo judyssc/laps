@@ -3,7 +3,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Confirmation page</title>
-<th:block th:include="/layout/header"></th:block>
 </head>
 <body>
 	<p th:text="'Hello, ' + ${employee.employeeName} + '!'">
@@ -15,6 +14,7 @@
 					<p th:text="'Medical Leave Balance: ' + *{medicalLeaveBalance}">
 					<p th:text="'Compensation Leave Balance: ' + *{compLeaveBalance}">
 				</div>
+	<table>
 		<tr>
 			<th>Reference number</th>
 			<th>Days applied</th>
@@ -45,6 +45,7 @@
             <td><a th:if="${leave.status !='Rejected'}" th:href="${'/leave/cancel/' + leave.leaveId}" class="btn btn-danger">Cancel</a></td>
 		</tr>
 	</table>
-	<p><a th:href="${'/leaveform/' + employee.employeeId}" class="btn btn-default">Back To Apply</a></p>
+	<p></p>
+	<p><a th:href="${'/leaveform/' + employee.employeeId}" class="btn btn-default">Back to leave form</a></p>
 </body>
 </html>
