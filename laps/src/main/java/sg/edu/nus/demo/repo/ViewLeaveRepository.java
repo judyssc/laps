@@ -15,5 +15,8 @@ public interface ViewLeaveRepository extends JpaRepository<LeaveApplication, Int
 	
 	@Query("SELECT l from LeaveApplication l WHERE l.employeeId = :eid")
 	ArrayList<LeaveApplication> findLeaveApplicationByEID(@Param("eid") int eid);
+	
+	@Query("SELECT l from LeaveApplication l  inner join l.employee le inner join le.manager m  WHERE m.mgrId= :mgrId")
+	ArrayList<LeaveApplication> findSubordinatesLeave(@Param("mgrId") int mgrId);
 	  
 }

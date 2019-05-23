@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,17 +38,19 @@ public class Employee {
 	private int medicalLeaveBalance;
 	@Column(name = "compleavebal")
 	private int compLeaveBalance;
+	private int mgr_id;
 	
 	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
 	public Collection<LeaveApplication> LeaveApplicationList;
 		
-	@ManyToOne 
-	//@JoinColumn(name="managerid")	 
-	@JoinColumn(name="mgr_id")	
+	//@ManyToOne 
+	//@JoinColumn(name="managerid")
+	//@JoinColumn(name="mgr_id")	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn( name="mgr_id",insertable = false, updatable = false)
 	private Manager manager; //assume each employee only one manager
 		
 	public Employee() {}
-	
 	
 	public Employee(String employeeName, String userId, String password, String designation, String employeeType,
 			int annualLeaveBalance, int medicalLeaveBalance, int compLeaveBalance, Manager manager) {
