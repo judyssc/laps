@@ -109,8 +109,6 @@ public class adminController {
 
 	
 
-	
-
 	@GetMapping("/createemp")
 	public String createmp(Model model)
 	{
