@@ -6,29 +6,88 @@
 <th:block th:include="/layout/admin_header"></th:block>
 <link rel="stylesheet" th:href="@{/css/style.css}"
 	href="../../static/css/style.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 </head>
 <body>
-
 	<table id="table">
 		<tr>
 			<th>Date</th>
 			<th>Description / Comments</th>
 			<th></th>
 		</tr>
-		<tr th:each="item : ${holidays}">
-			<td th:text="${item.getDate()}">""</td>
-			<td th:text="${item.getHoliday_flag()}">""</td>
-			<td><a th:href="${'/admin/delete_holidays/'+ item.getDate()}">Delete
-					me</a></td>
+		<tr th:each="clientlist : ${clientlist}">
+			<td th:text="${clientlist.date}">Text ...</td>
+			<td th:text="${clientlist.holiday_flag}">Text ...</td>
+			<td><a th:href="${'/admin/delete_holidays/'+ clientlist.date}">Remove</a></td>
 		</tr>
 	</table>
-<!-- 	<div> -->
-<!-- 		<label><a th:href="${'/add_holidays'}">Add new Holiday</a></label> -->
-<!-- 	</div> -->
 
-<!-- 	<div> -->
-<!-- 		<label>><a th:href="${'/admin'}"> Go back </a></label> -->
-<!-- 	</div> -->
 
+	<div>
+		<div class="form-group col-md-1">
+			<select class="form-control pagination" id="pageSizeSelect">
+				<option th:each="pageSize : ${pageSizes}" th:text="${pageSize}"
+					th:value="${pageSize}"
+					th:selected="${pageSize} == ${selectedPageSize}"></option>
+			</select>
+		</div>
+		<div th:if="${clientlist.totalPages != 1}"
+			class="form-group col-md-11 pagination-centered">
+			<ul class="pagination">
+				<li th:class="${clientlist.number == 0} ? disabled"><a
+					class="pageLink"
+					th:href="@{/admin/list_holidays/(pageSize=${selectedPageSize}, page=1)}">&laquo;</a></li>
+				<li th:class="${clientlist.number == 0} ? disabled"><a
+					class="pageLink"
+					th:href="@{/admin/list_holidays/(pageSize=${selectedPageSize}, page=${clientlist.number})}">&larr;</a>
+				</li>
+				<li
+					th:class="${clientlist.number == (page - 1)} ? 'active pointer-disabled'"
+					th:each="page : ${#numbers.sequence(pager.startPage, pager.endPage)}">
+					<a class="pageLink"
+					th:href="@{/admin/list_holidays/(pageSize=${selectedPageSize}, page=${page})}"
+					th:text="${page}"></a>
+				</li>
+				<li
+					th:class="${clientlist.number + 1 == clientlist.totalPages} ? disabled">
+					<a class="pageLink"
+					th:href="@{/admin/list_holidays/(pageSize=${selectedPageSize}, page=${clientlist.number + 2})}">&rarr;</a>
+				</li>
+				<li
+					th:class="${clientlist.number + 1 == clientlist.totalPages} ? disabled">
+					<a class="pageLink"
+					th:href="@{/admin/list_holidays/(pageSize=${selectedPageSize}, page=${clientlist.totalPages})}">&raquo;</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div align="center">
+		<h2>
+			<a th:href="${'/admin/add_holidays'}">Add new </a>
+		</h2>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"
+		integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+		crossorigin="anonymous"></script>
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous">
+	</script>
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			changePageAndSize();
+		});
+		function changePageAndSize() {
+			$('#pageSizeSelect').change(
+					function(evt) {
+						window.location.replace("/admin/list_holidays/?pageSize=" + this.value
+								+ "&page=1");
+					});
+		}
+	</script>
 </body>
 </html>
