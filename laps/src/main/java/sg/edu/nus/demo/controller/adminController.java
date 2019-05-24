@@ -76,7 +76,6 @@ public class adminController {
 		modelAndView.addObject("pager", pager);
 
 	    return modelAndView;
-
 	}
 	
 	@GetMapping("/admin/add_holidays")
