@@ -21,6 +21,7 @@ import sg.edu.nus.demo.repo.CalenderRepository;
 import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.LeaveRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
+import sg.edu.nus.demo.service.Mail_utility;
 
 
 @Controller
@@ -131,6 +132,10 @@ public class SubmitLeaveController {
 		leaveRepository.save(leave);		
 
 		model.addAttribute("leave", leave);
+		String message = "Leave submitted";
+		String mailId = employee.getEmail();
+		String status =Mail_utility.sendemail(message, mailId);
+		System.out.println(status);
 		return "leaveconfirmation";		
 	}
 	
