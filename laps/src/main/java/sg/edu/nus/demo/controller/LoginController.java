@@ -95,7 +95,7 @@ public class LoginController {
 		if(loginTrueFalse) {
 			Administrator admin = administratorRepository.findAdministratorByUserId(administrator.getUserId());
 			model.addAttribute("administrator", administrator);
-			return "loginsuccessfuladministrator";
+			return "admin_homepage";
 		}
 		else {
 			return "loginadministrator";

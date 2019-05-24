@@ -24,7 +24,6 @@ public class ViewSubordinateLeaveController {
    public String viewSubordinateLeave(@PathVariable("mgrId") int mgrId,Model model) {
 	  
 	   model.addAttribute("leavelist",rep.findSubordinatesLeave(mgrId));
-	   System.out.println("ok?");
 	   return "viewsubordinateleave";
    }
 
