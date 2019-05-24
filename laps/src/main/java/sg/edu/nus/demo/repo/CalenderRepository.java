@@ -16,5 +16,4 @@ public interface CalenderRepository extends	PagingAndSortingRepository<Calender,
 
 	@Query("SELECT c.date from Calender c")
 	ArrayList<LocalDate> listofPublicHolidays();
-	
 }

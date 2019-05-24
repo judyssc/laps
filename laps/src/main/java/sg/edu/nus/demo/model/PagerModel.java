@@ -47,7 +47,6 @@ public class PagerModel {
 			throw new IllegalArgumentException("Must be an odd value!");
 		}
 	}
-
 	public int getStartPage() {
 		return startPage;
 	}
