@@ -3,6 +3,7 @@ package sg.edu.nus.demo.controller;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import sg.edu.nus.demo.model.Calender;
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
 import sg.edu.nus.demo.repo.CalenderRepository;
@@ -209,7 +211,8 @@ public class SubmitLeaveController {
 	
 	public boolean isPublicHoliday(LocalDate dateToCheck) {
 		
-		ArrayList<LocalDate> listPB = calRepo.listofPublicHolidays();
+//		ArrayList<LocalDate> listPB = calRepo.listofPublicHolidays();
+		ArrayList<LocalDate> listPB = getLocalDate ( calRepo);
 		
 		/*
 		 * HashMap<String, LocalDate> allPublicHolidays = new HashMap<String,
@@ -227,6 +230,19 @@ public class SubmitLeaveController {
 		 */
 		
 		return listPB.contains(dateToCheck);
+	}
+	
+	public static ArrayList<LocalDate> getLocalDate (CalenderRepository calRepo){
+		
+		ArrayList<LocalDate> array = new ArrayList<LocalDate>();
+		for(Calender i : calRepo.findAll()) {
+			
+			String date = i.getDate();
+			LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			array.add(localDate);
+		}
+		return array;
+				
 	}
 	
 	

@@ -92,8 +92,8 @@ public class adminController {
 	}
 	@GetMapping("/admin/delete_holidays/{date}")
 	public String delete_holidays(@PathVariable String date ,Model model) {
-		LocalDate da= LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		calRepo.deleteById(da);
+//		LocalDate da= LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		calRepo.deleteById(date);
 		return "redirect:/admin/list_holidays";
 	}
 	

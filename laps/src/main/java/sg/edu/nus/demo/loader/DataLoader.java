@@ -57,9 +57,9 @@ public class DataLoader implements CommandLineRunner {
 		  
 		  employeeTest.setEmail("chua113@gmail.com");
 		  
-		  Calender vesak = new Calender(LocalDate.parse("2019-05-20", df),"Vesak Day");
-		  Calender sa48break = new Calender(LocalDate.parse("2019-05-30", df),"SA48 Break!");
-		  Calender sa48break2 = new Calender(LocalDate.parse("2019-05-31", df),"SA48 Break!!");
+		  Calender vesak = new Calender("2019-05-20","Vesak Day");
+		  Calender sa48break = new Calender("2019-05-30","SA48 Break!");
+		  Calender sa48break2 = new Calender("2019-05-31","SA48 Break!!");
 		  
 		  LeaveType annual = new LeaveType("Annual");
 		  LeaveType medical = new LeaveType("Medical");
@@ -71,5 +71,7 @@ public class DataLoader implements CommandLineRunner {
 		  
 		  leaveTypeRepo.save(annual); leaveTypeRepo.save(medical);leaveTypeRepo.save(compensation);leaveTypeRepo.save(hospital);
 		 
+		  System.out.println(vesak);
+		  System.out.println(sa48break);
 	}
 }

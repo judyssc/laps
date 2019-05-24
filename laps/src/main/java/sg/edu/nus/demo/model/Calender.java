@@ -1,7 +1,5 @@
 package sg.edu.nus.demo.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,22 +13,22 @@ public class Calender {
 	
 	@Id
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(length=100)
-	private LocalDate date;
+	@Column(length=10)
+	private String date;
 	private String holiday_flag;
 	public Calender() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Calender(LocalDate date, String holiday_flag) {
+	public Calender(String date, String holiday_flag) {
 		super();
 		this.date = date;
 		this.holiday_flag = holiday_flag;
 	}
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getHoliday_flag() {
@@ -38,6 +36,11 @@ public class Calender {
 	}
 	public void setHoliday_flag(String holiday_flag) {
 		this.holiday_flag = holiday_flag;
+	}
+	
+	@Override
+	public String toString() {
+		return "Calender [date=" + date + ", holiday_flag=" + holiday_flag + ", dateString=" + date.toString() + "]";
 	}
 	
 	

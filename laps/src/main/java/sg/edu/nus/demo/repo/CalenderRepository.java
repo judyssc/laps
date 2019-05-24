@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import sg.edu.nus.demo.model.Calender;
 
 @Repository
-public interface CalenderRepository extends	PagingAndSortingRepository<Calender,LocalDate>{
+public interface CalenderRepository extends	PagingAndSortingRepository<Calender,String>{
 
 	@Query("SELECT c.date from Calender c")
 	ArrayList<LocalDate> listofPublicHolidays();
