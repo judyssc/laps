@@ -90,7 +90,6 @@ INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`
 INSERT INTO `laps`.`employee` (`id`, `name`, `userid`, `password`, `designation`, `type`, `mgr_id`, `annualleavebal`, `medicalleavebal`, `compleavebal`) VALUES ('9', 'Xiaolin', 'xiaolin', '5f4dcc3b5aa765d61d8327deb882cf99', 'developer', 'employee', '2', '14', '60', '0');
 
 INSERT INTO `laps`.`leave_application` (`id`, `employee_id`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`, `type`) VALUES ('1', '1', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Kishore', '12345678', 'no comment', 'annual');
-INSERT INTO `laps`.`leave_application` (`id`, `employee_id`, `daysapplied`, `dateofapplication`, `startdate`, `enddate`, `status`, `reason`, `workdissemination`, `contactno`, `managercomments`, `type`) VALUES ('2', '2', '5', '2019-05-18 00:00:00', '2019-06-01 00:00:00', '2019-06-05 00:00:00', 'Applied', 'annual leave', 'Xiaolin', '12345678', 'no comment', 'annual');
 
 INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('1', 'Annual Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('2', 'Medical Leave');
