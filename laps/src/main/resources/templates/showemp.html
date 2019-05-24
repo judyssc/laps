@@ -8,18 +8,17 @@
 	href="../../static/css/style.css" />
 </head>
 <body>
-<table>
+<table th:align="center">
 <thead>
 <tr>
 <th>Employeeid</th>
-<th>employeename</th>
-<th>getuserid</th>
-<th>password</th>
-<th>designation</th>
-<th>employeetype</th>
-<th>annualleavebalance</th>
-<th>medicalleave balance</th>
-<th>comleavebalance</th>
+<th>Employeename</th>
+<th>UserName</th>
+<th>Designation</th>
+<th>Employeetype</th>
+<th>Annualleavebalance</th>
+<th>Medicalleave balance</th>
+<th>Comleavebalance</th>
 </tr>
 </thead>
 <tbody>
@@ -27,22 +26,25 @@
 <td th:text="${employee1.getEmployeeId()}">Employeeid</td>
 <td><a th:href="${'/delup/' + employee1.getEmployeeId()}" class="btn btn-default" th:text = "${employee1.getEmployeeName()}">Name</a></td>
 <td th:text="${employee1.getUserId()}">getuserid</td>
-<td th:text="${employee1.getPassword()}">password</td>
 <td th:text="${employee1.getDesignation()}">designation</td>
 <td th:text="${employee1.getEmployeeType()}">employeetype</td>
 <td th:text="${employee1.getAnnualLeaveBalance()}">annualleavebalance</td>
 <td th:text="${employee1.getMedicalLeaveBalance()}">medicalleave balance</td>
 <td th:text="${employee1.getCompLeaveBalance()}">comleavebalance</td>
+
 </tr>
 </tbody>
 </table>
-
+<br>
 
 <form action="#" th:action="@{/createemp}" th:object="${employee}" method="post">  
 
-<button name="create employee" type ="submit" value="0">create employee</button>
+&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;
+ <button name="create employee" type ="submit" value="0">create employee</button>
 </form>
-
-
+<br>
+<br>
 </body>
 </html>

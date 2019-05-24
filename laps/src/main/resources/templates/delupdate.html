@@ -8,16 +8,23 @@
 	href="../../static/css/style.css" />
 </head>
 <body>
-<table>
+<table th:align="center">
 <thead>
 <tr>
 <th>Employeeid</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <th>employeename</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <th>getuserid</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <th>designation</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <th>employeetype</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <th>annualleavebalance</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 <th>medicalleave balance</th>
+&emsp;&emsp;&emsp;&emsp;&emsp;
 </tr>
 </thead>
 <tr>
@@ -29,10 +36,11 @@
 <td th:text="${employedelup.getEmployeeType()}">EmployeeType</td>
 <td th:text="${employedelup.getAnnualLeaveBalance()}">AnnualLeaveBalance</td>
 <td th:text="${employedelup.getMedicalLeaveBalance()}">MedicalLeaveBalance</td>
-</tr>
-</table>
 
-<a th:href="${'/updateempid/' + employedelup.getEmployeeId()}" class="btn btn-default" >Update employee</a> &emsp;&emsp;&emsp;&emsp;&emsp;
+
+</tr>
+</table><br><br>
+ &emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;<a th:href="${'/updateempid/' + employedelup.getEmployeeId()}" class="btn btn-default" >Update employee</a> &emsp;&emsp;&emsp;&emsp;&emsp;
 <a th:href="${'/deleteempid/' + employedelup.getEmployeeId()}" class="btn btn-default" >Delete employee</a>
 
 </body>
