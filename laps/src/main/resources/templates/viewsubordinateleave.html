@@ -3,36 +3,38 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>ViewLeaveDetails</title>
+<link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />  
 </head>
 <body>
 <div class="container">
     <div th:if="${not #lists.isEmpty(leavelist)}">
-        <table class="table table-striped">
+        <table class="table" id="table">
             <tr>
-                <th>DaysApplied</th>
-                <th>EmployeeId</th>
-                <th>DateOfApplication</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
+                
+                <th>Employee Id</th>
+                <th>Date Of Application</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Days Applied</th>
                 <th>Status</th>
                 <th>Reason</th>
-                <th>WorkDissemination</th>
-                <th>ContactNo</th>
-                <th>ManagerComments</th>   
+                <th>Work Dissemination</th>
+                <th>Contact No</th>
+                <th>Manager Comments</th>   
                 <th>Type</th>                          
             </tr>
             <tr th:each="leave: ${leavelist}">
-                <td th:text="${leave.daysApplied}">DaysApplied</td>
-                <td th:text="${leave.employeeId}">EmployeeId</td>
-                <td th:text="${leave.dateOfApplication}">DateOfApplication</td>
-                <td th:text="${leave.startDate}">StartDate</td>
-                <td th:text="${leave.endDate}">EndDate</td>
+                <td th:text="${leave.employeeId}">Employee Id</td>
+                <td th:text="${leave.dateOfApplication}">Date Of Application</td>
+                <td th:text="${leave.startDate}">Start Date</td>
+                <td th:text="${leave.endDate}">End Date</td>
+                <td th:text="${leave.daysApplied}">Days Applied</td>
                 <td th:text="${leave.status}">Status</td>
                 <td th:text="${leave.reason}">Reason</td>
-                <td th:text="${leave.workDissemination}">WorkDissemination</td>
-                <td th:text="${leave.contactNo}">ContactNo</td>
-                <td th:text="${leave.managerComments}">ManagerComments</td>  
-                <td th:text="${leave.type}">ManagerComments</td>          
+                <td th:text="${leave.workDissemination}">Work Dissemination</td>
+                <td th:text="${leave.contactNo}">Contact No</td>
+                <td th:text="${leave.managerComments}">Manager Comments</td>  
+                <td th:text="${leave.type}">Leave Type</td>          
             </tr>
         </table>
     </div>
