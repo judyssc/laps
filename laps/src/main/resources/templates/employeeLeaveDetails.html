@@ -47,7 +47,7 @@
                 <td></td>        
             </tr> 
             <tr>                                             
-                <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-default">Edit</a></td>
+                <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-danger">Edit</a></td>
                 <td></td>
                 <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/delete/' + leave.leaveId}" class="btn btn-danger">Delete</a></td>
                 <td></td>
