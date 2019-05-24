@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>ViewLeaveDetails</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(leavelist)}">
+        <table class="table table-striped">
+            <tr>
+                <th>DaysApplied</th>
+                <th>EmployeeId</th>
+                <th>DateOfApplication</th>
+                <th>StartDate</th>
+                <th>EndDate</th>
+                <th>Status</th>
+                <th>Reason</th>
+                <th>WorkDissemination</th>
+                <th>ContactNo</th>
+                <th>ManagerComments</th>   
+                <th>Type</th>                          
+            </tr>
+            <tr th:each="leave: ${leavelist}">
+                <td th:text="${leave.daysApplied}">DaysApplied</td>
+                <td th:text="${leave.employeeId}">EmployeeId</td>
+                <td th:text="${leave.dateOfApplication}">DateOfApplication</td>
+                <td th:text="${leave.startDate}">StartDate</td>
+                <td th:text="${leave.endDate}">EndDate</td>
+                <td th:text="${leave.status}">Status</td>
+                <td th:text="${leave.reason}">Reason</td>
+                <td th:text="${leave.workDissemination}">WorkDissemination</td>
+                <td th:text="${leave.contactNo}">ContactNo</td>
+                <td th:text="${leave.managerComments}">ManagerComments</td>  
+                <td th:text="${leave.type}">ManagerComments</td>          
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
