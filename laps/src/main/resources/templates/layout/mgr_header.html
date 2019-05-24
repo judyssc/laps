@@ -13,13 +13,12 @@
     <div th:fragment="header">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <ul class="nav navbar-nav">
-                        <li><a th:href="${'/leaveapplications'}">View Leave Application for Approval</a></li>
-                        <li><a th:href="${'/viewsubordinateleave/'}">Subordinate Leave History</a></li>
-                    </ul>
-                </div>
-            </div>
+                <div class="navbar-header" th:object=${manager}>
+                	<a class="navbar-brand" href="#" th:href="@{/}">Home</a> &nbsp; | &nbsp;
+                	<a class="navbar-brand" th:href="${'/leaveapplications/' + manager.userid}">View Leave Application for Approval</a> &nbsp; | &nbsp;
+                    <a class="navbar-brand" th:href="${'/viewsubordinateleave/' + manager.mgrId +'/'+manager.name}" >Subordinate Leave History</a>
+			</div>
+			</div>
         </nav>
         
         <div class="jumbotron">

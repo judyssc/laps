@@ -6,8 +6,9 @@
 <th:block th:include="/layout/mgr_header"></th:block>
 </head>
 <body>
+<h1 th:text="${manager.name}"> dummy </h1>
 	<div class="container">
-		<form action="#" th:action="@{/leaveapplications}" th:object="${updateleave}" method="post">
+		<form action="#" th:action="@{/leaveapplications/{name}(name=${manager.name})}" th:object="${updateleave}" method="post">
 			
 			<div class="form-group">
 			<input type="hidden" class="form-control" th:field="*{leaveId}" />
@@ -67,7 +68,7 @@
 			</div>
 			<div class="form-group">
 				<button name="update leaveapp" type="submit" value="0">Update</button>
-				<button name="cancel leaveapp" type="cancel" value="0"><a th:href="@{/cancel}">Cancel</a></button>
+				<button name="cancel leaveapp" type="cancel" value="0"><a th:href="${'/cancel/'+manager.name}">Cancel</a></button>
 			</div>
 		</form>
 	</div>
