@@ -11,15 +11,16 @@ import javax.persistence.Table;
 public class LeaveType {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private  int id;
 	private String type;
 	
 	public LeaveType() {
 		
 	}
-	public LeaveType(int id_, String type_) {
-		this.id=id_;
+
+	public LeaveType(/* int id_, */String type_) {
+		/* this.id=id_; */
 		this.type=type_;
 	}
 	public int getId() {

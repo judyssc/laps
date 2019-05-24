@@ -20,6 +20,7 @@ import sg.edu.nus.demo.model.LeaveApplication;
 import sg.edu.nus.demo.repo.CalenderRepository;
 import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.LeaveRepository;
+import sg.edu.nus.demo.repo.LeaveTypesRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
 import sg.edu.nus.demo.service.Mail_utility;
 
@@ -34,6 +35,12 @@ public class SubmitLeaveController {
 	private ManagerRepository mgrRepo; 
 	
 	private CalenderRepository calRepo;
+	private LeaveTypesRepository leaveTypeRepo;
+	
+	@Autowired
+	public void setLeaveTypeRepo(LeaveTypesRepository leaveTypeRepo) {
+		this.leaveTypeRepo = leaveTypeRepo;
+	}
 	
 	@Autowired
 	public void setCalRepo(CalenderRepository calRepo) {
@@ -62,6 +69,10 @@ public class SubmitLeaveController {
 		leaveObject.setDateOfApplication(LocalDate.now());
 		
 		Employee employee = empRepo.findById(employeeId).orElse(null);
+		
+		ArrayList<String> listTypes = (ArrayList<String>)leaveTypeRepo.listAllLeaveTypes();
+		
+		model.addAttribute("listofLeaveTypes", listTypes);
 		
 		model.addAttribute("leave", leaveObject);
 		model.addAttribute("employee", employee); 

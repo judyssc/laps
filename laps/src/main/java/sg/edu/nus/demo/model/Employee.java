@@ -39,6 +39,8 @@ public class Employee {
 	@Column(name = "compleavebal")
 	private int compLeaveBalance;
 	//private int mgr_id;
+	@Column(name = "email")
+	private String email;
 	
 	
 	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
@@ -151,6 +153,15 @@ public class Employee {
 	}
 
 	
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Collection<LeaveApplication> getLeaveApplicationList() {
 		return LeaveApplicationList;
 	}

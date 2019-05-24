@@ -7,5 +7,5 @@ import sg.edu.nus.demo.model.LeaveApplication;
 
 @Repository
 public interface LeaveRepository extends JpaRepository<LeaveApplication, Integer> {
-
+	
 }
