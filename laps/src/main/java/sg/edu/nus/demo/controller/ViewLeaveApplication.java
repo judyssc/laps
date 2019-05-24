@@ -32,6 +32,8 @@ public class ViewLeaveApplication {
 	@RequestMapping(path="/viewleave/{employeeId}", method = RequestMethod.GET)
 	public String viewLeaveApplication (@PathVariable("employeeId") int employeeId ,Model model) {
 		Employee emp = empRepo.findById(employeeId).orElse(null);
+		if(emp==null) {
+			return "redirect:/login/employee";}
 		ArrayList<LeaveApplication> listnew =new ArrayList<LeaveApplication> ();
 		
 		ArrayList<LeaveApplication> lista =(ArrayList<LeaveApplication>)rep.findLeaveApplicationByEID(employeeId);		
@@ -53,6 +55,8 @@ public class ViewLeaveApplication {
 	private String viewLeaveDetails(Model model,@PathVariable("LeaveId") int id ) {	
 		
 		LeaveApplication leaveObject = rep.findById(id).orElse(null);
+		if(leaveObject==null) {
+			return "redirect:/login/employee";}
 		Employee employee = empRepo.findById(leaveObject.getEmployeeId()).orElse(null);
 		model.addAttribute("leave", leaveObject);
 		model.addAttribute("employee", employee); 			
