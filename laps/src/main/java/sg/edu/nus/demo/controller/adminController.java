@@ -1,5 +1,8 @@
 package sg.edu.nus.demo.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,10 +72,10 @@ public class adminController {
 	}
 	@GetMapping("/admin/delete_holidays/{date}")
 	public String delete_holidays(@PathVariable String date ,Model model) {
-		calRepo.deleteById(date);
+		LocalDate da= LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		calRepo.deleteById(da);
 		return "redirect:/admin/list_holidays";
 	}
-	
 	
 	
 	@GetMapping("/admin/list_leavetypes")
