@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS EMPLOYEE;
 DROP TABLE IF EXISTS MANAGER;
 DROP TABLE IF EXISTS ADMINISTRATOR;
 DROP TABLE IF EXISTS LEAVE_TYPES;
-DROP TABLE IF EXISTS CALENDAR;
+DROP TABLE IF EXISTS CALENDER;
 
 CREATE TABLE `laps`.`administrator` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -37,6 +37,7 @@ CREATE TABLE `laps`.`employee` (
   `annualleavebal` VARCHAR(45) NULL,
   `medicalleavebal` VARCHAR(45) NULL,
   `compleavebal` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT MGRID_FK FOREIGN KEY (mgr_id) REFERENCES manager(id));
   
@@ -64,12 +65,12 @@ CREATE TABLE `laps`.`employee` (
   `type` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `laps`.`calendar` (
+CREATE TABLE `laps`.`calender` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `day_name` VARCHAR(9) NULL,
-  `weekend_flag` CHAR(1) NULL,
-  `holiday_flag` CHAR(1) NULL,
+  `weekend_flag` VARCHAR(45) NULL,
+  `holiday_flag` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
 INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Felicia', 'felicia', '5f4dcc3b5aa765d61d8327deb882cf99');
@@ -93,3 +94,26 @@ INSERT INTO `laps`.`leave_application` (`id`, `employee_id`, `daysapplied`, `dat
 INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('1', 'Annual Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('2', 'Medical Leave');
 INSERT INTO `laps`.`leave_types` (`id`, `type`) VALUES ('3', 'Compensation Leave');
+
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-01-01','New Year’s Day');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-02-05','Chinese New Yeary');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-02-06','Chinese New Year');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-04-19','Good Friday');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-05-01','Labour Day');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-05-19','Vesak Day');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-06-05','Hari Raya Puasa');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-08-09','National Day');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-08-11','Hari Raya Haji');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-10-27','Deepavali');
+INSERT INTO `laps`.`calender`(`date`,`holiday_flag`)
+VALUES('2019-12-25','Christmas Day');
