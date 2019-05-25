@@ -1,68 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Manager Leave Detail</title>
+<th:block th:include="/layout/mgr_header"></th:block>
 </head>
 <body>
+<h1 th:text="${manager.name}"> dummy </h1>
 	<div class="container">
-		<form action="#" th:action="@{/saveleave}" th:object="${leaveupdate}" method="post">
-			<div class="row">
-				<label class="col-sm-2">Employee Id:</label>
-				<div class="col-sm-10">${leaveupdate.employeeid}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Days Applied:</label>
-				<div class="col-sm-10">${leaveupdate.daysApplied}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Leave Type:</label>
-				<div class="col-sm-10">${leaveupdate.type}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Date of Application:</label>
-				<div class="col-sm-10">${leaveupdate.dateOfApplication}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Start Date:</label>
-				<div class="col-sm-10">${leaveupdate.startDate}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">End Date:</label>
-				<div class="col-sm-10">${leaveupdate.endDate}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Reason:</label>
-				<div class="col-sm-10">${leaveupdate.reason}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Work Dissemination:</label>
-				<div class="col-sm-10">${leaveupdate.workDissemination}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Contact No:</label>
-				<div class="col-sm-10">${leaveupdate.workDissemination}</div>
-			</div>
-			<div class="row">
-				<label class="col-sm-2">Leave Status:</label>
+		<form action="#" th:action="@{/leaveapplications/{name}(name=${manager.name})}" th:object="${updateleave}" method="post">
+			
+			<div class="form-group">
+			<input type="hidden" class="form-control" th:field="*{leaveId}" />
 				<div class="col-sm-10">
-					<select th:field="*{type}">
+					Days Applied: <label th:text="*{daysApplied}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					Leave Type: <label th:text="*{type}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					Date of Application:<label th:text="*{dateOfApplication}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					Start Date: <label th:text="*{startDate}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					End Date: <label th:text="*{endDate}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					Reason: <label th:text="*{reason}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					 Work Dissemination:<label th:text="*{workDissemination}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					Contact No: <label th:text="*{contactNo}"></label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10">
+					Leave Status:
+					<select th:field="*{status}">
 						<option th:value="'Applied'" th:text="Applied"></option>
 						<option th:value="'Approved'" th:text="Approved"></option>
 						<option th:value="'Rejected'" th:text="Rejected"></option>
 					</select>
 				</div>
 			</div>
-			<div class="row">
-				<label class="col-sm-2">Manager Comment:</label>
+			<div class="form-group">
 				<div class="col-sm-10">
-					<input type="text" name="managerComments"
-						th:value="${leaveupdate.managerComments}"
-						th:field="*{managerComments}">
+					Manager Comments: <input type="text" th:field="*{managerComments}">
 				</div>
 			</div>
-			<div class="row">
+			<div class="form-group">
 				<button name="update leaveapp" type="submit" value="0">Update</button>
+				<button name="cancel leaveapp" type="cancel" value="0"><a th:href="${'/cancel/'+manager.name}">Cancel</a></button>
 			</div>
 		</form>
 	</div>

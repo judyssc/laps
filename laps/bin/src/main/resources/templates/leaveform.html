@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>LAPS Leave Form</title>
+<th:block th:include="/layout/header"></th:block>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function(){
+	  var minDate = new Date();
+	  
+	  $("#tryStart").datepicker({
+	    dateFormat:'yy-mm-dd',
+	    
+	    changeMonth:true,
+	    changeYear:true,
+	    minDate:minDate,
+	    onClose: function(selectedDate){
+	    	$("#tryEnd").datepicker("option", "minDate", selectedDate);
+	    }
+	  })
+	  
+	  $("#tryEnd").datepicker({
+		  dateFormat:'yy-mm-dd',
+		    changeMonth:true,
+		    changeYear:true,
+		    minDate: document.getElementById($("#tryStart"))
+	  });
+	  
+	});
+</script>
 </head>
 <body>
+<div class="container">
+    <div th:fragment="header">
+     <div class="jumbotron" >
+<p><b>Choose a job you love, and you will never have to take a day of leave in your life - Unknown wise dude. </b> </p>
+
 <p th:text= " 'Date of application: ' + ${leave.dateOfApplication}"/>
-	<div class="container">
+	
 		<div>
 			<form class="form-horizontal" th:object="${leave}"
-				th:action="@{/leaveconfirmation}" method="post">
+				th:action="@{/leaveconfirmation/} + ${employee.employeeId}" method="post">
+				<div th:object="${employee}">
+					<p th:text="'Hello, ' + *{employeeName} + '!'">
+					<p th:text="'Annual Leave Balance: ' + *{annualLeaveBalance}">
+					<p th:text="'Medical Leave Balance: ' + *{medicalLeaveBalance}">
+					<p th:text="'Compensation Leave Balance: ' + *{compLeaveBalance}">
+				</div>
 				<div class="form-group">
 					<div class="col-sm-10">
 						<input type="hidden" class="form-control" th:field="*{leaveId}" />
@@ -28,13 +67,13 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Leave Start Date:</label>
 					<div class="col-sm-10">
-						<input type="date" class="form-control" th:field="*{startDate}" />
+						<input type="text" id="tryStart"  class="form-control" th:field="*{startDate}" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Leave End Date:</label>
 					<div class="col-sm-10">
-						<input type="date" class="form-control" th:field="*{endDate}" />
+						<input type="text" id="tryEnd" class="form-control" th:field="*{endDate}" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -68,10 +107,8 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Type of leave</label>
 					<div class="col-sm-10">
-						<select th:field="*{type}">
-							<option th:value="'Annual'" th:text="Annual"></option>
-							<option th:value="'Medical'" th:text="Medical"></option>
-							<option th:value="'Compensation'" th:text="Compensation"></option>
+						<select th:field="*{type}"  >
+							<option th:each="type:${listofLeaveTypes}" th:value=${type} th:text=${type}>
 						</select>
 					</div>
 				</div>
@@ -82,6 +119,8 @@
 				</div>
 
 			</form>
+		</div>
+	</div>
 		</div>
 	</div>
 </body>

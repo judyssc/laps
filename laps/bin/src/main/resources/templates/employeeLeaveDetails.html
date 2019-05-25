@@ -2,43 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
+<link th:href="@{/css/bootstrap.min.css}"
+          href="../../static/css/bootstrap.min.css"
+          rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
 <title>ViewLeaveDetails</title>
+<th:block th:include="/layout/header"></th:block>
 </head>
 <body>
 <div class="container">
-    <div th:if="${not #lists.isEmpty(leave)}">
-        <table class="table table-striped">
-            <tr>
-                <th>DaysApplied</th>
-                <th>EmployeeId</th>
-                <th>DateOfApplication</th>
-                <th>StartDate</th>
-                <th>EndDate</th>
-                <th>Status</th>
-                <th>Reason</th>
-                <th>WorkDissemination</th>
-                <th>ContactNo</th>
-                <th>ManagerComments</th>   
-                 <th>Type</th>                          
+    <div th:fragment="header">
+     <div class="jumbotron" >
+      <div th:if="${not #lists.isEmpty(leave)}">
+        <table class="table table-striped" th:object=${leave}>
+            <tr>     
+                
+                <td>EmployeeId:</td><td th:text="${leave.employeeId}"></td>
+                <td></td>   
+                <td>DaysApplied:</td><td th:text="${leave.daysApplied}"></td>                                      
             </tr>
-            <tr th:object=${leave}>
-                <td th:text="${leave.daysApplied}">DaysApplied</td>
-                <td th:text="${leave.employeeId}">EmployeeId</td>
-                <td th:text="${leave.dateOfApplication}">DateOfApplication</td>
-                <td th:text="${leave.startDate}">StartDate</td>
-                <td th:text="${leave.endDate}">EndDate</td>
-                <td th:text="${leave.status}">Status</td>
-                <td th:text="${leave.reason}">Reason</td>
-                <td th:text="${leave.workDissemination}">WorkDissemination</td>
-                <td th:text="${leave.contactNo}">ContactNo</td>
-                <td th:text="${leave.managerComments}">ManagerComments</td>  
-                <td th:text="${leave.type}">ManagerComments</td>          
-                <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-default">Edit</a></td>
+            <tr>     
+                <td>DateOfApplication:</td><td th:text="${leave.dateOfApplication}"></td>
+                <td></td>
+                <td>StartDate:</td><td th:text="${leave.startDate}"></td>
+            </tr>
+            <tr>     
+                <td>EndDate:</td><td th:text="${leave.endDate}">EndDate</td>
+                <td></td>
+                <td>Status:</td><td th:text="${leave.status}">Status</td>
+            </tr>
+            
+             <tr>     
+                <td>Reason:</td><td th:text="${leave.reason}"></td>
+                <td></td>
+                <td>WorkDissemination:<td th:text="${leave.workDissemination}"></td>
+            </tr>
+             <tr>     
+                <td>ContactNo:</td><td th:text="${leave.contactNo}">ContactNo</td>
+                <td></td>
+                <td>ManagerComments:<td th:text="${leave.managerComments}"></td> 
+            </tr>
+            <tr>     
+                <td>Leave:</td><td th:text="${leave.type}"></td>  
+                <td></td>        
+            </tr> 
+            <tr>                                             
+                <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-danger">Edit</a></td>
+                <td></td>
                 <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/delete/' + leave.leaveId}" class="btn btn-danger">Delete</a></td>
+                <td></td>
                 <td><a th:if="${leave.status !='Rejected'}" th:href="${'/leave/cancel/' + leave.leaveId}" class="btn btn-danger">Cancel</a></td>
             </tr>
         </table>
     </div>
+ </div>
+</div>
 </div>
 </body>
 </html>

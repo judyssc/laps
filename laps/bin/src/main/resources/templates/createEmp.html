@@ -3,21 +3,73 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<th:block th:include="/layout/admin_header"></th:block>
+<link rel="stylesheet" th:href="@{/css/style.css}"
+	href="../../static/css/style.css" />
 </head>
 <body>
-<form action="#" th:action="@{/saveemp}" th:object="${employe1}" method="post">
-<h4>employee id:<input type="text" name="employee id" th:field="*{employeeId}"></h4><br/>
-<h4>employeeName:<input type="text" name="employee id" th:field="*{employeeName}"></h4><br/>
-<h4>userId:<input type="text" name="employee id" th:field="*{userId}"></h4><br/>
-<h4>password:<input type="text" name="employee id" th:field="*{password}"></h4><br/>
-<h4>designation:<input type="text" name="employee id" th:field="*{designation}"></h4><br/>
-<h4>Employeetype:<input type="radio" id="radioVal1" value="manager" th:field="*{employeeType}">Manager
+<form action="#" th:action="@{/saveemp1}" th:object="${employe1}" method="post">
+<table th:align="center">
+<tr>
+<td>
+
+<h4>EmployeeName:</h4></td>
+
+<td>
+<fieldset>
+<input type="text" name="employeeName" th:field="*{employeeName}">
+<p th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></p>
+</fieldset>
+</td>
+
+</tr>
+
+<tr>
+<td>
+<h4>UserId:</h4></td><td><input type="text" name="employee id" th:field="*{userId}"><br/>
+</td><td><p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
+</td>
+</tr>
+<tr>
+<td>
+<h4>password:</h4></td><td><input type="text" name="employee id" th:field="*{password}"><br/>
+</td>
+</tr>
+<tr>
+<td>
+<h4>Employeetype:</h4></td><td><h4><input type="radio" id="radioVal1" value="manager" th:field="*{employeeType}">Manager
+
 <input type="radio" id="radioVal1" value="employee" th:field="*{employeeType}">Employee
 <input type="radio" id="radioVal1" value="admin" th:field="*{employeeType}">Admin</h4>
-<h4>annualLeaveBalance:<input type="text" name="employee id" th:field="*{annualLeaveBalance}"></h4><br/>
-<h4>medicalLeaveBalance:<input type="text" name="employee id" th:field="*{medicalLeaveBalance}"></h4><br/>
-<h4>compLeaveBalance:<input type="text" name="employee id" th:field="*{compLeaveBalance}"></h4><br/>
+</td>
+</tr>
+<tr>
+<td>
+<h4>Employee designation:</h4></td><td><h4><input type="radio" id="radioVal1" value="teamlead" th:field="*{designation}">TeamLead
+<input type="radio" id="radioVal1" value="developer" th:field="*{designation}">Developer</h4></td>
+
+</tr>
+<tr>
+<td>
+<input type="hidden" name="annualLeaveBalance" value="14"><br/>
+</td>
+</tr>
+<tr>
+<td>
+<input type="hidden" name="medicalLeaveBalance" value="60" >
+</td>
+</tr>
+<tr>
+<td>
+<input type="hidden" name="compLeaveBalance" value="0"><br/>
+</td>
+</tr>
+<tr>
+<td>
 <h4><button name="submit" type ="submit" value="0">submit</button></h4>
+</td>
+</tr>
+</table>
 </form>
 </body>
 </html>

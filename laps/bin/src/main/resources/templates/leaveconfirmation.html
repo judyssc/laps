@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Confirmation page</title>
+<th:block th:include="/layout/header"></th:block>
 </head>
 <body>
+<div class="container">
+    <div th:fragment="header">
+     <div class="jumbotron" >
+	<p th:text="'Hello, ' + ${employee.employeeName} + '!'">
 	<h1>Leave Application Received</h1>
-	<p>Your leave application will be forwarded to your
-	manager for approval. Please check the details of your application below. </p>
+	<p>Please check the details of your application below. If you have any questions, please contact the Human Resource Department. </p>
+	
+	<div th:object="${employee}">
+					<p th:text="'Annual Leave Balance: ' + *{annualLeaveBalance}">
+					<p th:text="'Medical Leave Balance: ' + *{medicalLeaveBalance}">
+					<p th:text="'Compensation Leave Balance: ' + *{compLeaveBalance}">
+				</div>
+				
 	<table>
 		<tr>
 			<th>Reference number</th>
@@ -34,12 +45,16 @@
 			<td th:text="${leave.managerComments}">Error</td>
 			<td th:text="${leave.type}">Error</td>
 			<td th:text="${leave.status}">Error</td>
-			<td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-default">Edit</a></td>
+			<td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/edit/' + leave.leaveId}" class="btn btn-danger">Edit</a></td>
             <td><a th:if="${leave.status !='Rejected' and leave.status !='Approved'}" th:href="${'/leave/delete/' + leave.leaveId}" class="btn btn-danger">Delete</a></td>
             <td><a th:if="${leave.status !='Rejected'}" th:href="${'/leave/cancel/' + leave.leaveId}" class="btn btn-danger">Cancel</a></td>
 		</tr>
 	</table>
 	<p></p>
-	<a th:href="${'/leaveform'}" class="btn btn-default">Back to leave form</a>
+	<p><a th:href="${'/leaveform/' + employee.employeeId}" class="btn btn-default">Back to leave form</a></p>
+	
+	</div>
+	</div>
+	</div>
 </body>
 </html>

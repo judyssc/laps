@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" th:attr="style='height: 100%;'">
 <head>
 <meta charset="UTF-8" />
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../../static/css/bootstrap.min.css"
+          rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
 <title>LAPS</title>
-<th:block th:include="/layout/admin_header"></th:block>
+<th:block th:include="/layout/header"></th:block>
 </head>
-<body>
-	<h1>Look at the stars</h1>
-	<h2>Look how they shine for you</h2>
+<body th:attr="style='height: 100%;margin: 10;'">
+
+<div class="container"  th:attr="style='height: 100%;'">
+    <div th:fragment="header" th:attr="style='background:url('+ @{/images/bg2.png} + ');height: 100%;'">
+     <div class="jumbotron" th:attr="style='background:url('+ @{/images/bg2.png} + ');height: 100%;'" >
+            <div class="row text-center">
+                <div class="row">
+                </div>
+            </div>
+            <div class="row text-center">
+            <div class="row text-center">
+            </div>
+        </div>        
+    </div>
+</div>	
+</div>
 </body>
 </html>
