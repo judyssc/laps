@@ -71,7 +71,5 @@ public class DataLoader implements CommandLineRunner {
 		  
 		  leaveTypeRepo.save(annual); leaveTypeRepo.save(medical);leaveTypeRepo.save(compensation);leaveTypeRepo.save(hospital);
 		 
-		  System.out.println(vesak);
-		  System.out.println(sa48break);
 	}
 }
