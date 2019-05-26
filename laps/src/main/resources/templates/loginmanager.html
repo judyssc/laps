@@ -11,14 +11,20 @@
 </div>
 <div class="container">
 	<div>
-		<form class="form-horizontal" th:object="${manager}"
-			th:action="@{/authenticateManager}" method="post">
+		<form class="form-horizontal" th:object="${manager}" th:action="@{/authenticateManager}" method="post">
 			<div id="login-form">
-				<label class="col-sm-2 control-label">Manager</label><br>				
-				<input type="text" class="form-control" id="login-text" th:field="*{userid}" placeholder="Enter Username"/>				
-				<label class="col-sm-2 control-label">Password</label><br>				
-				<input type="password" class="form-control" id="login-password" th:field="*{password}" placeholder="Enter Password"/>					
-				<button type="submit" class="button" id="login-btn">Login</button>					
+				<div>
+					<label class="col-sm-2 control-label">Manager</label><br>				
+					<input type="text" class="form-control" id="login-text" th:field="*{userid}" placeholder="Enter Username"/>				
+				</div>
+				<div>
+					<label class="col-sm-2 control-label">Password</label><br>				
+					<input type="password" class="form-control" id="login-password" th:field="*{password}" placeholder="Enter Password"/>					
+				</div>
+				<button type="submit" class="button" id="login-btn">Login</button>	
+				<span id="red" th:if="${#fields.hasErrors('userid')}" th:errors="*{userid}"></span><br>	                	
+	            <span id="red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br>
+	            <span id="red" th:if="${logError != null}">Wrong username or password</span>				
 			</div>
 		</form>
 	</div>

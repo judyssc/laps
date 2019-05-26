@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "employee")
@@ -24,10 +26,16 @@ public class Employee {
 	private int employeeId; 
 	@Column(name = "name")
 	private String employeeName;
+	
+	@NotNull
+	@Size(min=2, message="Username is required")
 	@Column(name = "userid")
 	private String userId;
+	@NotNull
+	@Size(min=6, message="Password is required")
 	@Column(name = "password")
 	private String password;
+	
 	@Column(name = "designation")
 	private String designation;
 	@Column(name = "type")
