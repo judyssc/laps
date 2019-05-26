@@ -7,9 +7,12 @@
 <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />  
 </head>
 <body>
+<p></p>
+<p></p>
 <div class="container">
+<h4>View Subordinate Leave</h4>
     <div th:if="${not #lists.isEmpty(leavelist)}">
-        <table class="table" id="table">
+        <table class="table table-striped">
             <tr>
                 
                 <th>Employee Id</th>
@@ -41,4 +44,5 @@
     </div>
 </div>
 </body>
+<th:block th:include="/layout/footer"></th:block>
 </html>

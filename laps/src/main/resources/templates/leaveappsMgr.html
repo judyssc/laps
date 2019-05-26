@@ -11,9 +11,8 @@
 </head>
 <body>
 <div class="container">
-
-	<h2>View Leave Applications</h2>
-	<table id="table">
+	<h4>View Leave Applications</h4>
+	<table class="table table-striped">
 		<tr>
 			<th style="display:none;">Leave Id</th>
 			<th>Employee Name</th>
@@ -37,8 +36,8 @@
             	<a th:href="${'/updateleave/'+manager.name+'/' + leave.getLeaveId()}" class="btn btn-default">Update</a>
             </td>
 		</tr>
-	</table>
-	
+	</table>	
 </div>
 </body>
+<th:block th:include="/layout/footer"></th:block>
 </html>

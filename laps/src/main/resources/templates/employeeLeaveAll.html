@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="container">
+<h4>View Leave</h4>
     <div th:fragment="header">
-     <div class="jumbotron" >
     <div th:if="${not #lists.isEmpty(pesonalleave)}">
         <table class="table table-striped">
             <tr>
@@ -33,7 +33,6 @@
         </table>
     </div>
 </div>
-    </div>
 </div>
 </body>
 <th:block th:include="/layout/footer"></th:block>

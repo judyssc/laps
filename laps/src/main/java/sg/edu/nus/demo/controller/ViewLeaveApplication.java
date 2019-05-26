@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
+import sg.edu.nus.demo.model.Manager;
 import sg.edu.nus.demo.repo.EmployeeRepository;
+import sg.edu.nus.demo.repo.ManagerRepository;
 import sg.edu.nus.demo.repo.ViewLeaveRepository;
 
 
@@ -28,11 +30,11 @@ public class ViewLeaveApplication {
 	public void setEmpRepo(EmployeeRepository empRepo) {
 		this.empRepo = empRepo;
 	}
-	
-	@RequestMapping(path="/", method = RequestMethod.GET)
-	private String viewLeaveDetails() {					
-		return "redirect:/login/employee";
-	}
+		
+//	@RequestMapping(path="/", method = RequestMethod.GET)
+//	private String viewLeaveDetails() {					
+//		return "redirect:/login/employee";
+//	}
 	@RequestMapping(path="/viewleave/{employeeId}", method = RequestMethod.GET)
 	public String viewLeaveApplication (@PathVariable("employeeId") int employeeId ,Model model) {
 		Employee emp = empRepo.findById(employeeId).orElse(null);
