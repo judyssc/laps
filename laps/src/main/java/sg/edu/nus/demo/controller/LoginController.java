@@ -1,10 +1,12 @@
 package sg.edu.nus.demo.controller;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +44,8 @@ public class LoginController {
 	}
 	
 	@PostMapping("/authenticateEmployee")
-	public String authenticateEmployee(Model model, @ModelAttribute Employee employee) {
+	public String authenticateEmployee(Model model, @Valid @ModelAttribute Employee employee, BindingResult bindingResult) {
+		
 		// After keying in the username and password
 		boolean loginTrueFalse = loginService.authenticateEmployee(employee.getUserId(), employee.getPassword());
 
@@ -51,7 +54,11 @@ public class LoginController {
 			model.addAttribute("employee", emp);
 			return "index";
 		}
+		else if (bindingResult.hasErrors()) {
+            return "loginemployee";
+		}	
 		else {
+			model.addAttribute("logError","logError");
 			return "loginemployee";
 		}
 	}
@@ -65,7 +72,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/authenticateManager")
-	public String authenticateManager(Model model, @ModelAttribute Manager manager) {
+	public String authenticateManager(Model model, @Valid @ModelAttribute Manager manager, BindingResult bindingResult) {
 		// After keying in the username and password
 		boolean loginTrueFalse = loginService.authenticateManager(manager.getUserid(), manager.getPassword());
 
@@ -74,7 +81,11 @@ public class LoginController {
 			model.addAttribute("manager", mgr);
 			return "index_mgr";
 		}
+		else if (bindingResult.hasErrors()) {
+            return "loginmanager";
+		}	
 		else {
+			model.addAttribute("logError","logError");
 			return "loginmanager";
 		}
 	}
@@ -88,7 +99,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/authenticateAdministrator")
-	public String authenticateAdministator(Model model, @ModelAttribute Administrator administrator) {
+	public String authenticateAdministator(Model model, @Valid @ModelAttribute Administrator administrator, BindingResult bindingResult) {
 		// After keying in the username and password
 		boolean loginTrueFalse = loginService.authenticateAdministrator(administrator.getUserId(), administrator.getPassword());
 
@@ -97,7 +108,11 @@ public class LoginController {
 			model.addAttribute("administrator", administrator);
 			return "admin_homepage";
 		}
+		else if (bindingResult.hasErrors()) {
+            return "loginadministrator";
+		}	
 		else {
+			model.addAttribute("logError","logError");
 			return "loginadministrator";
 		}
 	}

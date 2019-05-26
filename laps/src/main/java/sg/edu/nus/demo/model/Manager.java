@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -23,8 +25,13 @@ public class Manager {
 	private int mgrId;
 	@Column(name = "name")
 	private String name;
+	
+	@NotNull
+	@Size(min=2, message="Username is required")
 	@Column(name = "userid")
 	private String userid;
+	@NotNull
+	@Size(min=6, message="Password is required")
 	@Column(name = "password")
 	private String password;
 	
