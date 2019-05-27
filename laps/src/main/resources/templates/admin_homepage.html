@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:attr="style='height: 100%;'">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <th:block th:include="/layout/admin_header"></th:block>
-<link rel="stylesheet" th:href="@{/css/style.css}"
-	href="../../static/css/style.css" />
+<link th:href="@{/css/bootstrap.min.css}"
+          href="../../static/css/bootstrap.min.css"
+          rel="stylesheet" media="screen" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../../static/css/style.css" />
 </head>
-<body>
-
-
-<div class="imgbox">
-    <img class="center-fit" src='/images/home2.jpg'>
+<body th:attr="style='height: 75%;margin: 10;'">
+<div class="container"  th:attr="style='height: 100%;'">
+    <div th:fragment="header" th:attr="style='background:url('+ @{/images/home2.jpg} + ');height: 100%;'">
+     <div class="jumbotron" th:attr="style='background:url('+ @{/images/home2.jpg} + ');height: 100%;'" >    
+    </div>
+</div>	
 </div>
-<!-- <h1><a th:href="${'/createemp'}"> Add new employee</a></h1> -->
-<!-- <h1><a th:href="${'/add_holidays'}" > Add Public Holidays</a></h1> -->
-<!-- <h1><a th:href="${'/list_holidays'}"> List Public Holidays</a></h1> -->
-<!-- <h1><a th:href="${'/list_leavetypes'}"> List Leave types</a></h1> -->
-<!-- <h1><a th:href="${'/add_leavetypes'}" > Add new Leave type</a></h1> -->
-
 </body>
 <th:block th:include="/layout/footer"></th:block>
 </html>

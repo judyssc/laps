@@ -9,8 +9,13 @@
 <title>LAPS</title>
 <th:block th:include="/layout/mgr_header"></th:block>
 </head>
-<div class="imgbox">
-    <img class="center-fit" src='/images/home2.jpg'>
+<body th:attr="style='height: 75%;margin: 10;'">
+
+<div class="container"  th:attr="style='height: 100%;'">
+    <div th:fragment="header" th:attr="style='background:url('+ @{/images/home2.jpg} + ');height: 100%;'">
+     <div class="jumbotron" th:attr="style='background:url('+ @{/images/home2.jpg} + ');height: 100%;'" >    
+    </div>
+</div>	
 </div>
 </body>
 <th:block th:include="/layout/footer"></th:block>
