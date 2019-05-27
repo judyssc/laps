@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import sg.edu.nus.demo.model.Manager;
 import sg.edu.nus.demo.repo.ManagerRepository;
 import sg.edu.nus.demo.repo.ViewLeaveRepository;
 
@@ -22,19 +23,19 @@ public class ViewSubordinateLeaveController {
 	
 	@Autowired
 	private ManagerRepository mgrRepo;
-
-   public void setMgrRepo(ManagerRepository mgrRepo) {
+	
+	public void setMgrRepo(ManagerRepository mgrRepo) {
 		this.mgrRepo = mgrRepo;
 	}
 
-
-
-@RequestMapping(path="/viewsubordinateleave/{mgrId}/{name}", method = RequestMethod.GET)
-   public String viewSubordinateLeave(@PathVariable("mgrId") int mgrId,@PathVariable("name") String name,Model model) {
-	  
-	   model.addAttribute("leavelist",rep.findSubordinatesLeave(mgrId));
-	   model.addAttribute("manager",mgrRepo.findManagerByUserId(name));
-	   return "viewsubordinateleave";
+	@RequestMapping(path="/viewsubordinateleave/{mgrId}", method = RequestMethod.GET)
+	public String viewSubordinateLeave(@PathVariable("mgrId") int mgrId, Model model) {
+		model.addAttribute("leavelist",rep.findSubordinatesLeave(mgrId));
+		
+		Manager mgr = mgrRepo.findById(mgrId).orElse(null);
+		model.addAttribute("manager", mgr);
+		
+		return "viewsubordinateleave";
    }
 
 }

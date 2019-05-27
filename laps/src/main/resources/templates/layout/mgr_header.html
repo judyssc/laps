@@ -13,17 +13,17 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">                
-                	<a class="navbar-brand" th:href="${'/login/manager'}">Home</a>
+                	<a class="navbar-brand" th:href="${'/index_mgr/' + manager.mgrId}">Home</a>
                 	<ul class="nav navbar-nav" th:object=${manager}>
-                	<li><a th:href="${'/leaveapplications/' + manager.userid}">View Leave Applications</a></li>
-                    <li><a th:href="${'/viewsubordinateleave/' + manager.mgrId +'/'+manager.name}" >Subordinate Leave History</a></li>
+                	<li><a th:href="@{'/leaveapplications/' + ${manager.mgrId}}">View Leave Applications</a></li>
+                    <li><a th:href="@{'/viewsubordinateleave/' + ${manager.mgrId}}">Subordinate Leave History</a></li>
 				       <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>  
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>  
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>                 
-                       <li><a th:text="'Hello, ' + ${manager.userid} + '!!'"></a></li>
+                       <li><a th:text="'Hello, ' + ${manager.name} + '!!'"></a></li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>

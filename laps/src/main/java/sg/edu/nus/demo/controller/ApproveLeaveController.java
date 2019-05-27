@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
+import sg.edu.nus.demo.model.Manager;
 import sg.edu.nus.demo.repo.LeaveRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
 
@@ -21,7 +22,11 @@ public class ApproveLeaveController {
 	
 	@Autowired
 	private LeaveRepository leaveRepo;
-	
+
+	public void setLeaveRepo(LeaveRepository leaveRepo) {
+		this.leaveRepo = leaveRepo;
+	}
+
 	@Autowired
 	private ManagerRepository mgrRepo;
 	
@@ -29,47 +34,50 @@ public class ApproveLeaveController {
 		this.mgrRepo = mgrRepo;
 	}
 
-	@Autowired
-	public void setLeaveRepository(LeaveRepository leaveRepository) {
-		this.leaveRepo = leaveRepository;
+	@RequestMapping(path = "/index_mgr/{mgrId}", method = RequestMethod.GET)
+	public String index(@PathVariable(name = "mgrId") String mgrId, Model model) {
+    	int intMgrId = Integer.parseInt(mgrId);
+    	Manager mgr = mgrRepo.findById(intMgrId).orElse(null);
+		model.addAttribute("manager", mgr);
+		return "index_mgr";
 	}
-
-	@GetMapping("/leaveapplications/{name}")
-	public String showleaveapp(Model model,@PathVariable(value = "name") String name) {
-		model.addAttribute("leaves",leaveRepo.findAll());
+	
+	@GetMapping("/leaveapplications/{mgrId}")
+	public String showleaveapp(Model model, @PathVariable(name = "mgrId") int mgrId) {
 		
-		HashMap<Integer,Employee> empName = new  HashMap<Integer,Employee>();
+		model.addAttribute("leaves",leaveRepo.findSubordinatesLeave(mgrId));
 		
-		for(LeaveApplication i :leaveRepo.findAll() ) {
+		HashMap<Integer,Employee> empName = new HashMap<Integer,Employee>();
+		for(LeaveApplication i :leaveRepo.findSubordinatesLeave(mgrId)) {
 			empName.put(i.getEmployeeId(),leaveRepo.findEmployeeById(i.getEmployeeId()));
 		}
-		
 		model.addAttribute("empdict",empName);
-		model.addAttribute("manager", mgrRepo.findManagerByUserId(name));
+		
+		Manager mgr = mgrRepo.findById(mgrId).orElse(null);
+		model.addAttribute("manager", mgr);
+		
 		return "leaveappsMgr";
 	}
 	
-	@PostMapping("/leaveapplications/{name}") 
-	public String updateleave(Model model, LeaveApplication leaveapp,@PathVariable(value = "name") String name) {
+	@PostMapping("/leaveapplications/{mgrId}") 
+	public String updateleave(Model model, LeaveApplication leaveapp, @PathVariable(name = "mgrId") int mgrId) {
 		LeaveApplication la = leaveRepo.findById(leaveapp.getLeaveId()).orElse(null);
 		la.setStatus(leaveapp.getStatus());
 		la.setManagerComments(leaveapp.getManagerComments());
 		leaveRepo.save(la);
 		
-		return "redirect:/leaveapplications/"+name;
+		return "redirect:/leaveapplications/"+mgrId;
 	}
-	
-	@RequestMapping(path = "/updateleave/{name}/{leaveid}", method = RequestMethod.GET)
-	public String editleave(Model model,@PathVariable(value = "leaveid") String leaveid,@PathVariable(value = "name") String name) {
+
+	@RequestMapping(path = "/updateleave/{mgrId}/{leaveid}", method = RequestMethod.GET)
+	public String editleave(Model model,@PathVariable(value = "leaveid") String leaveid,@PathVariable(name = "mgrId") int mgrId) {
 		int ida = Integer.parseInt(leaveid);
 		LeaveApplication la = leaveRepo.findById(ida).orElse(null);
 		model.addAttribute("updateleave", la);
-		model.addAttribute("manager", mgrRepo.findManagerByUserId(name));
+		
+		Manager mgr = mgrRepo.findById(mgrId).orElse(null);
+		model.addAttribute("manager", mgr);
 		return "approverejectleave";
 	}
-	
-	@RequestMapping(path = "/cancel/{name}", method = RequestMethod.GET)
-	public String cancelupdate(@PathVariable(value = "name") String name) {
-		return "redirect:/leaveapplications/"+name;
-	}
+
 }
