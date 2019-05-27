@@ -35,6 +35,9 @@ public class Manager {
 	@Column(name = "password")
 	private String password;
 	
+	@Column(name = "mgremail")
+	private String mgremail;
+
 	public Manager() {}
 
 	public Manager(String name, String userid, String password) {
@@ -77,6 +80,14 @@ public class Manager {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getMgremail() {
+		return mgremail;
+	}
+
+	public void setMgremail(String mgremail) {
+		this.mgremail = mgremail;
 	}
 
 	@Override

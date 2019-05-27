@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import sg.edu.nus.demo.model.Calender;
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
+import sg.edu.nus.demo.model.Manager;
 import sg.edu.nus.demo.repo.CalenderRepository;
 import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.LeaveRepository;
@@ -145,10 +146,19 @@ public class SubmitLeaveController {
 		leaveRepository.save(leave);		
 
 		model.addAttribute("leave", leave);
-		String message = "Leave submitted";
+		
+		String message = "You have submitted leave.";
 		String mailId = employee.getEmail();
 		String status =Mail_utility.sendemail(message, mailId);
 		System.out.println(status);
+		
+		Manager mgr = employee.getManager();
+		int mgrid = mgr.getMgrId();
+		mgr = mgrRepo.findById(mgrid).orElse(null);
+		String mgrmessage = employee.getEmployeeName() + " has submitted leave. Click http://localhost:8080/login/manager to update leave.";
+		String mgremail = mgr.getMgremail();
+		status =Mail_utility.sendemail(mgrmessage, mgremail);
+		
 		return "leaveconfirmation";		
 	}
 	

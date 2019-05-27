@@ -43,7 +43,7 @@ public class Mail_utility {
 			// -- Set the FROM and TO fields --
 			msg.setFrom(new InternetAddress("sa48team2@gmail.com"));
 			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email_id, false));
-			msg.setSubject("test mail..");
+			msg.setSubject("Leave Application Notification");
 			msg.setText(message);
 			msg.setSentDate(new Date());
 			Transport.send(msg);

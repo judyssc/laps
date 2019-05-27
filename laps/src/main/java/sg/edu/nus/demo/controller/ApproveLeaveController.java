@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import sg.edu.nus.demo.model.Employee;
 import sg.edu.nus.demo.model.LeaveApplication;
 import sg.edu.nus.demo.model.Manager;
+import sg.edu.nus.demo.repo.EmployeeRepository;
 import sg.edu.nus.demo.repo.LeaveRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
+import sg.edu.nus.demo.service.Mail_utility;
 
 @Controller
 public class ApproveLeaveController {
@@ -32,6 +34,13 @@ public class ApproveLeaveController {
 	
 	public void setMgrRepo(ManagerRepository mgrRepo) {
 		this.mgrRepo = mgrRepo;
+	}
+	
+	@Autowired
+	private EmployeeRepository empRepo;
+	
+	public void setEmpRepo(EmployeeRepository empRepo) {
+		this.empRepo = empRepo;
 	}
 
 	@RequestMapping(path = "/index_mgr/{mgrId}", method = RequestMethod.GET)
@@ -65,6 +74,12 @@ public class ApproveLeaveController {
 		la.setStatus(leaveapp.getStatus());
 		la.setManagerComments(leaveapp.getManagerComments());
 		leaveRepo.save(la);
+		
+		Employee employee = empRepo.findById(la.getEmployeeId()).orElse(null);		
+		model.addAttribute("employee", employee);
+		String message = "Your leave status has been updated. Please login from http://localhost:8080/login/employee to see your leave status.";
+		String mailId = employee.getEmail();
+		String status = Mail_utility.sendemail(message, mailId);
 		
 		return "redirect:/leaveapplications/"+mgrId;
 	}

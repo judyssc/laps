@@ -24,6 +24,7 @@ CREATE TABLE `laps`.`manager` (
   `name` VARCHAR(45) NULL,
   `userid` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
+  `mgremail` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `laps`.`employee` (
@@ -73,8 +74,8 @@ CREATE TABLE `laps`.`calender` (
   `holiday_flag` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Felicia', 'felicia', '5f4dcc3b5aa765d61d8327deb882cf99');
-INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`) VALUES ('2', 'Judy', 'judy', '5f4dcc3b5aa765d61d8327deb882cf99');
+INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`, `mgremail`) VALUES ('1', 'Felicia', 'felicia', '5f4dcc3b5aa765d61d8327deb882cf99','abc12@gmail.com');
+INSERT INTO `laps`.`manager` (`id`, `name`, `userid`, `password`, `mgremail`) VALUES ('2', 'Judy', 'judy', '5f4dcc3b5aa765d61d8327deb882cf99','abc12@gmail.com');
 
 INSERT INTO `laps`.`administrator` (`id`, `name`, `userid`, `password`) VALUES ('1', 'Dhilip', 'dhilip', '5f4dcc3b5aa765d61d8327deb882cf99');
 INSERT INTO `laps`.`administrator` (`id`, `name`, `userid`, `password`) VALUES ('2', 'Leesiong', 'leesiong', '5f4dcc3b5aa765d61d8327deb882cf99');

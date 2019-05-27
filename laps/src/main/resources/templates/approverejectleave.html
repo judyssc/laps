@@ -8,7 +8,7 @@
 <body>
 <h1 th:text="${manager.name}"> dummy </h1>
 	<div class="container">
-		<form action="#" th:action="@{/leaveapplications/{name}(name=${manager.name})}" th:object="${updateleave}" method="post">
+		<form action="#" th:action="@{/leaveapplications/{name}(name=${manager.mgrId})}" th:object="${updateleave}" method="post">
 			
 			<div class="form-group">
 			<input type="hidden" class="form-control" th:field="*{leaveId}" />
