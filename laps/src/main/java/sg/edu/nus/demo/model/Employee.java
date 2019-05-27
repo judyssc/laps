@@ -25,14 +25,13 @@ public class Employee {
 	@Column(name = "id")
 	private int employeeId; 
 	@Column(name = "name")
+	
 	private String employeeName;
 	
-	@NotNull
-	@Size(min=2, message="Username is required")
+	
 	@Column(name = "userid")
 	private String userId;
-	@NotNull
-	@Size(min=6, message="Password is required")
+	
 	@Column(name = "password")
 	private String password;
 	

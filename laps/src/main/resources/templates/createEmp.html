@@ -14,25 +14,19 @@
 <td>
 
 <h4>EmployeeName:</h4></td>
-
 <td>
-<fieldset>
 <input type="text" name="employeeName" th:field="*{employeeName}">
-<p th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></p>
-</fieldset>
-</td>
-
-</tr>
-
-<tr>
-<td>
-<h4>UserId:</h4></td><td><input type="text" name="employee id" th:field="*{userId}"><br/>
-</td><td><p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
 </td>
 </tr>
 <tr>
 <td>
-<h4>password:</h4></td><td><input type="text" name="employee id" th:field="*{password}"><br/>
+<h4>UserId:</h4></td><td><input type="text" name="userId" th:field="*{userId}"><br/>
+</td>
+</tr>
+<tr>
+<td>
+<h4>password:</h4></td><td><input type="text" name="password" th:field="*{password}"><br/>
+
 </td>
 </tr>
 <tr>
