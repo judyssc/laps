@@ -193,8 +193,7 @@ public class Employee {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", userId=" + userId
 				+ ", password=" + password + ", designation=" + designation + ", employeeType=" + employeeType
 				+ ", annualLeaveBalance=" + annualLeaveBalance + ", medicalLeaveBalance=" + medicalLeaveBalance
-				+ ", compLeaveBalance=" + compLeaveBalance + ", LeaveApplicationList=" + LeaveApplicationList
-				+ ", manager=" + manager + "]";
+				+ ", compLeaveBalance=" + compLeaveBalance + ", manager=" + manager + "]";
 	}
 
 	@Override
