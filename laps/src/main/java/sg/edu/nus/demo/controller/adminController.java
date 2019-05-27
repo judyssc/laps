@@ -165,7 +165,7 @@ public class adminController {
 		
 	}
 	@PostMapping("/saveemp") 
-	public String saveemployee(@Valid Employee emp,BindingResult bindingresult) {
+	public String saveemployee(Employee emp,BindingResult bindingresult) {
 		if(bindingresult.hasErrors()) {
 			return "createEmp";
 		}
