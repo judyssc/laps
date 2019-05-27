@@ -15,7 +15,7 @@
                 <div class="navbar-header">                
                 	<a class="navbar-brand" th:href="${'/login/manager'}">Home</a>
                 	<ul class="nav navbar-nav" th:object=${manager}>
-                	<li><a th:href="${'/leaveapplications/' + manager.userid}">View Leave Application for Approval</a></li>
+                	<li><a th:href="${'/leaveapplications/' + manager.userid}">View Leave Applications</a></li>
                     <li><a th:href="${'/viewsubordinateleave/' + manager.mgrId +'/'+manager.name}" >Subordinate Leave History</a></li>
 				       <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
