@@ -1,5 +1,6 @@
 package sg.edu.nus.demo.controller;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -187,23 +188,15 @@ public class SubmitLeaveController {
 		
 		int countWorkDays = 0;
 		
-		Calendar startCal = Calendar.getInstance();
-		startCal.setTime(java.sql.Date.valueOf(startDate));
-		
-		Calendar endCal = Calendar.getInstance();
-		endCal.setTime(java.sql.Date.valueOf(endDate));
-		
-		if(startCal.getTime() == endCal.getTime()) {
-			return 1;
-		}
-		
-		if(startCal.get(Calendar.DAY_OF_WEEK)!= Calendar.SATURDAY && startCal.get(Calendar.DAY_OF_WEEK)!= Calendar.SUNDAY && !isPublicHoliday(startDate)) {
+		if (startDate.getDayOfWeek() != DayOfWeek.SATURDAY && startDate.getDayOfWeek() != DayOfWeek.SUNDAY
+				&& !isPublicHoliday(startDate)) {
 			countWorkDays = 1;
 		}
-		
-		while(startCal.getTime().before(endCal.getTime())) {
-			startCal.add(Calendar.DAY_OF_MONTH, 1);
-			if(startCal.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && startCal.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY && !isPublicHoliday(startCal.getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())) {
+
+		while (startDate.isBefore(endDate)) {
+			startDate = startDate.plusDays(1);
+			if (startDate.getDayOfWeek() != DayOfWeek.SATURDAY && startDate.getDayOfWeek() != DayOfWeek.SUNDAY
+					&& !isPublicHoliday(startDate)) {
 				++countWorkDays;
 			}
 		}
