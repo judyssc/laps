@@ -6,54 +6,68 @@
 <th:block th:include="/layout/mgr_header"></th:block>
 </head>
 <body>
-<h1 th:text="${manager.name}"> dummy </h1>
 	<div class="container">
 		<form action="#" th:action="@{/leaveapplications/{name}(name=${manager.mgrId})}" th:object="${updateleave}" method="post">
-			
 			<div class="form-group">
-			<input type="hidden" class="form-control" th:field="*{leaveId}" />
+				<input type="hidden" class="form-control" th:field="*{leaveId}" />
+			</div>
+			<div class="form-group">
+			<label class="col-sm-2 control-label">Days Applied:</label>
 				<div class="col-sm-10">
-					Days Applied: <label th:text="*{daysApplied}"></label>
+					<label th:text="*{daysApplied}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Leave Type: </label>
 				<div class="col-sm-10">
-					Leave Type: <label th:text="*{type}"></label>
+					<label th:text="*{type}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Date of Application:</label>
 				<div class="col-sm-10">
-					Date of Application:<label th:text="*{dateOfApplication}"></label>
+					<label th:text="*{dateOfApplication}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Start Date:</label>
 				<div class="col-sm-10">
-					Start Date: <label th:text="*{startDate}"></label>
+					<label th:text="*{startDate}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">End Date:</label>
 				<div class="col-sm-10">
-					End Date: <label th:text="*{endDate}"></label>
+					<label th:text="*{endDate}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Reason:</label>
 				<div class="col-sm-10">
-					Reason: <label th:text="*{reason}"></label>
+					<label th:text="*{reason}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Work Dissemination:</label>
 				<div class="col-sm-10">
-					 Work Dissemination:<label th:text="*{workDissemination}"></label>
+					 <label th:text="*{workDissemination}"></label>
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Contact No:</label>
 				<div class="col-sm-10">
-					Contact No: <label th:text="*{contactNo}"></label>
+					<label th:text="*{contactNo}"></label>
+				</div>
+			</div>
+						<div class="form-group">
+				<label class="col-sm-2 control-label">Manager Comments:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" th:field="*{managerComments} ">
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">Leave Status:</label>
 				<div class="col-sm-10">
-					Leave Status:
 					<select th:field="*{status}">
 						<option th:value="'Applied'" th:text="Applied"></option>
 						<option th:value="'Approved'" th:text="Approved"></option>
@@ -61,14 +75,13 @@
 					</select>
 				</div>
 			</div>
+
 			<div class="form-group">
+				<label class="col-sm-2 control-label"></label>
 				<div class="col-sm-10">
-					Manager Comments: <input type="text" th:field="*{managerComments}">
+					<button name="update leaveapp" type="submit" class="btn btn-primary" value="0">Update</button>
 				</div>
-			</div>
-			<div class="form-group">
-				<button name="update leaveapp" type="submit" value="0">Update</button>
-				<button name="cancel leaveapp" type="cancel" value="0"><a th:href="${'/cancel/'+manager.name}">Cancel</a></button>
+				
 			</div>
 		</form>
 	</div>
