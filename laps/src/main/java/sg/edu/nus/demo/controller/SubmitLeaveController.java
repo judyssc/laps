@@ -10,10 +10,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -27,11 +31,14 @@ import sg.edu.nus.demo.repo.LeaveRepository;
 import sg.edu.nus.demo.repo.LeaveTypesRepository;
 import sg.edu.nus.demo.repo.ManagerRepository;
 import sg.edu.nus.demo.service.Mail_utility;
+import sg.edu.nus.demo.validator.DateValidator;
 
 
 @Controller
 public class SubmitLeaveController {
-
+	
+	@Autowired
+	private DateValidator dateValidator;
 	
 	private LeaveRepository leaveRepository;
 	
@@ -69,8 +76,8 @@ public class SubmitLeaveController {
 	@GetMapping("/leaveform/{employeeId}")
 	public String createNewLeave(Model model, @PathVariable int employeeId) {
 		
-		LeaveApplication leaveObject = new LeaveApplication();
-		leaveObject.setDateOfApplication(LocalDate.now());
+		LeaveApplication leave = new LeaveApplication();
+		leave.setDateOfApplication(LocalDate.now());
 		
 		Employee employee = empRepo.findById(employeeId).orElse(null);
 		
@@ -78,13 +85,25 @@ public class SubmitLeaveController {
 		
 		model.addAttribute("listofLeaveTypes", listTypes);
 		
-		model.addAttribute("leave", leaveObject);
+		model.addAttribute("leave", leave);
 		model.addAttribute("employee", employee); 
+		
 		return "leaveform";
 	}
 	
 	@PostMapping("/leaveconfirmation/{employeeId}")
-	public String saveLeave(Model model, LeaveApplication leave, @PathVariable int employeeId) {
+	public String saveLeave(@Valid @ModelAttribute("leave") LeaveApplication leave, BindingResult result, Model model, @PathVariable int employeeId ) {
+		
+		dateValidator.validate(leave, result); 
+		
+		if(result.hasErrors()) {
+			Employee employee = empRepo.findById(employeeId).orElse(null);
+			ArrayList<String> listTypes = (ArrayList<String>)leaveTypeRepo.listAllLeaveTypes();
+			model.addAttribute("employee", employee);
+			model.addAttribute("listofLeaveTypes", listTypes);
+			return "leaveform";
+		}
+		
 		leave.setDaysApplied(getWorkingDays(leave.getStartDate(), leave.getEndDate()));
 		if(leave.getLeaveId()==0) {
 		leave.setStatus("Applied");
@@ -214,24 +233,8 @@ public class SubmitLeaveController {
 	
 	public boolean isPublicHoliday(LocalDate dateToCheck) {
 		
-//		ArrayList<LocalDate> listPB = calRepo.listofPublicHolidays();
 		ArrayList<LocalDate> listPB = getLocalDate ( calRepo);
-		
-		/*
-		 * HashMap<String, LocalDate> allPublicHolidays = new HashMap<String,
-		 * LocalDate>(); listOfPublicHolidays.put("New Year's Day", LocalDate.of(2019,
-		 * 1, 1)); listOfPublicHolidays.put("Chinese New Year", LocalDate.of(2019, 2,
-		 * 5)); listOfPublicHolidays.put("Chinese New Year", LocalDate.of(2019, 2, 6));
-		 * listOfPublicHolidays.put("Good Friday", LocalDate.of(2019, 4, 19));
-		 * listOfPublicHolidays.put("Labour Day", LocalDate.of(2019, 5, 1));
-		 * listOfPublicHolidays.put("Vesak Day", LocalDate.of(2019, 5, 20));
-		 * listOfPublicHolidays.put("Hari Raya Puasa", LocalDate.of(2019, 6, 5));
-		 * listOfPublicHolidays.put("National Day", LocalDate.of(2019, 8, 9));
-		 * listOfPublicHolidays.put("Hari Raya Haji", LocalDate.of(2019, 8, 12));
-		 * listOfPublicHolidays.put("Deepavali", LocalDate.of(2019, 10, 28));
-		 * listOfPublicHolidays.put("Christmas", LocalDate.of(2019, 12, 25));
-		 */
-		
+
 		return listPB.contains(dateToCheck);
 	}
 	

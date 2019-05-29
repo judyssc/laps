@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>LAPS Leave Form</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 <th:block th:include="/layout/header"></th:block>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -36,7 +37,7 @@
     <div th:fragment="header">
 <p><b>Choose a job you love, and you will never have to take a day of leave in your life - Unknown wise dude. </b> </p>
 
-<p th:text= " 'Date of application: ' + ${leave.dateOfApplication}"/>
+<!-- <p th:text= " 'Date of application: ' + ${leave.dateOfApplication}"/> -->
 	
 		<div>
 			<form class="form-horizontal" th:object="${leave}"
@@ -65,13 +66,15 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Leave Start Date:</label>
 					<div class="col-sm-10">
-						<input type="text" id="tryStart"  class="form-control" th:field="*{startDate}" required/>
+						<input type="text" id="tryStart"  class="form-control" th:field="*{startDate}"/>
+						<span id="red" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">startDate</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Leave End Date:</label>
 					<div class="col-sm-10">
-						<input type="text" id="tryEnd" class="form-control" th:field="*{endDate}" required/>
+						<input type="text" id="tryEnd" class="form-control" th:field="*{endDate}"/>
+						<span id="red" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">endDate</span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -83,12 +86,14 @@
 					<label class="col-sm-2 control-label">Reason for applying leave:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{reason}" />
+						<span id="red" th:if="${#fields.hasErrors('reason')}" th:errors="*{reason}">Reason</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Work Duties hand over to:</label>
 					<div class="col-sm-10">
 						<input type="text" class="form-control" th:field="*{workDissemination}" />
+						<span id="red" th:if="${#fields.hasErrors('workDissemination')}" th:errors="*{workDissemination}">Reason</span>
 					</div>
 				</div>
 				<div class="form-group">

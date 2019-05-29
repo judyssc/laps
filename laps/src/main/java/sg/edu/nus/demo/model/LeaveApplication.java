@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -41,8 +42,10 @@ public class LeaveApplication {
 	@Column(name = "status")
 	private String status;
 	@Column(name = "reason")
+	@Size(min=5,max=25, message="Please key in a valid reason with 5-20 letters")
 	private String reason;
 	@Column(name = "workdissemination")
+	@Size(min=1,max=25, message="Please arrow someone to do your work!")
 	private String workDissemination;
 	@Column(name = "contactno")
 	private int contactNo;
