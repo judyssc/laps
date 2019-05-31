@@ -20,8 +20,7 @@ import javax.validation.constraints.Size;
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
-	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int employeeId; 
 	@Column(name = "name")
@@ -45,17 +44,13 @@ public class Employee {
 	private int medicalLeaveBalance;
 	@Column(name = "compleavebal")
 	private int compLeaveBalance;
-	//private int mgr_id;
 	@Column(name = "email")
 	private String email;
 	
 	
 	@OneToMany(targetEntity=LeaveApplication.class, mappedBy="employee")
 	public Collection<LeaveApplication> LeaveApplicationList;
-		
-	//@ManyToOne 
-	//@JoinColumn(name="managerid")
-	//@JoinColumn(name="mgr_id")	
+			
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn( name="mgr_id",insertable = false, updatable = false)
 	private Manager manager; //assume each employee only one manager

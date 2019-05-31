@@ -16,8 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Administrator {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
-	/* @GenericGenerator(name = "system-uuid", strategy = "uuid2") */
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int adminId;
 	@Column(name = "name")

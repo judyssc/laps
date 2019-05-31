@@ -31,10 +31,6 @@ public class ViewLeaveApplication {
 		this.empRepo = empRepo;
 	}
 		
-//	@RequestMapping(path="/", method = RequestMethod.GET)
-//	private String viewLeaveDetails() {					
-//		return "redirect:/login/employee";
-//	}
 	@RequestMapping(path="/viewleave/{employeeId}", method = RequestMethod.GET)
 	public String viewLeaveApplication (@PathVariable("employeeId") int employeeId ,Model model) {
 		Employee emp = empRepo.findById(employeeId).orElse(null);

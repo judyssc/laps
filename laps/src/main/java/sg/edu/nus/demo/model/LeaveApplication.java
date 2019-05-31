@@ -20,10 +20,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "leave_application")
 public class LeaveApplication {
 
-	//DateTimeFormatter df = DateTimeFormatter.ofPattern("d-MMM-yyyy");
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO/* , generator = "system-uuid" */)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int LeaveId;
 	@Column(name = "employeeId")

@@ -19,8 +19,7 @@ public class LeaveType {
 		
 	}
 
-	public LeaveType(/* int id_, */String type_) {
-		/* this.id=id_; */
+	public LeaveType(String type_) {
 		this.type=type_;
 	}
 	public int getId() {
